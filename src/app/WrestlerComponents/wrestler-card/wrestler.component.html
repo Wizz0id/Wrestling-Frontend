@@ -1,0 +1,8 @@
+<div class="wrestler-card" (click)="redirectToWrestlerCard()">
+  <h2>{{ wrestler.fio }}</h2>
+  <p>Рост: {{wrestler.height}}</p>
+  <p>Вес: {{wrestler.weight}}</p>
+  <p>Пол: {{wrestler.gender}}</p>
+  <p>Дата начала карьеры: {{wrestler.startOfCareer| date: 'dd.MM.yyyy'}} </p>
+  <p> {{wrestler.retired ? 'На пенсии' : 'Активный рестлер'}}</p>
+</div>

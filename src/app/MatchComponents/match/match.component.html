@@ -1,0 +1,10 @@
+<div class="match-card" *ngIf="match">
+  <h2>{{ match.name }}</h2>
+  <p><strong>Тип:</strong> {{ match.type }}</p>
+  <p><strong>Профессиональный рейтинг:</strong> {{ match.professionalRating }}</p>
+  <p><strong>ID события:</strong> {{ match.eventId }}</p>
+  <p><strong>ID победителя:</strong> {{ match.winnerId }}</p>
+
+  <!-- Встраивание видео -->
+  <iframe width="560" height="315" [src]="safeUrl" allowfullscreen></iframe>
+</div>
