@@ -8,5 +8,6 @@ export interface Wrestler{
   trainer: string;
   startOfCareer: Date;
   retired: boolean;
-  promotionID: number;
+  promotionPicture: number[];
+  promotionName: string;
 }

@@ -28,7 +28,7 @@ export class PromotionsListComponent implements OnInit{
   }
 
   loadWrestlers(): void {
-    this.promotionService.getWrestlers(this.searchQuery.value).subscribe((list) => this.promotionList = list);
+    this.promotionService.getPromotions(this.searchQuery.value).subscribe((list) => this.promotionList = list);
   }
 
   onSearchKeyDown(event: Event): void {

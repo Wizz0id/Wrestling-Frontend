@@ -13,8 +13,13 @@ export class PromotionService {
   constructor(private http: HttpClient) {
   }
 
-  getWrestlers(search?: string): Observable<Promotion[]>{
+  getPromotions(search?: string): Observable<Promotion[]>{
     const url = search ? `${this.promotionUrl}?search=${search}`: this.promotionUrl;
     return this.http.get<Promotion[]>(url);
+  }
+
+  updatePromotion(id: number, promotion: Promotion)
+  {
+    this.http.put(`${this.promotionUrl}/${id}`, promotion, { headers: { 'Content-Type': 'application/json' } }).subscribe();
   }
 }

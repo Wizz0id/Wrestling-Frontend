@@ -6,6 +6,6 @@
   <p><strong>Пол:</strong> {{ wrestler.gender === 'MALE' ? 'Мужской' : 'Женский' }}</p>
   <p><strong>Тренер:</strong> {{ wrestler.trainer }}</p>
   <p><strong>Дата начала карьеры:</strong> {{ wrestler.startOfCareer | date: 'dd.MM.yyyy' }}</p>
-  <p><strong>Статус:</strong> {{ wrestler.retired ? 'На пенсии' : 'Активный рестлер' }}</p>
-  <p><strong>ID промоушена:</strong> {{ wrestler.promotionID }}</p>
+  <p><strong>Статус:</strong> {{ wrestler.retired ? 'На пенсии' : 'Выступает' }}</p>
+  <img *ngIf="wrestler.promotionPicture" [src]="'data:image/jpeg;base64,' + wrestler.promotionPicture" alt="{{wrestler.promotionName}}">
 </div>
