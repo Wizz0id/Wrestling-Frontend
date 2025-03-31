@@ -14,12 +14,14 @@ export class PromotionService {
   }
 
   getPromotions(search?: string): Observable<Promotion[]>{
-    const url = search ? `${this.promotionUrl}?search=${search}`: this.promotionUrl;
-    return this.http.get<Promotion[]>(url);
+    return this.http.get<Promotion[]>(search ? `${this.promotionUrl}?search=${search}`: this.promotionUrl);
+  }
+  getPromotionById(id: string): Observable<Promotion>{
+    return this.http.get<Promotion>(`${this.promotionUrl}/${id}`);
   }
 
-  updatePromotion(id: number, promotion: Promotion)
+  updatePromotion(id: number, promotion: Promotion): Observable<Promotion>
   {
-    this.http.put(`${this.promotionUrl}/${id}`, promotion, { headers: { 'Content-Type': 'application/json' } }).subscribe();
+    return this.http.put<Promotion>(`${this.promotionUrl}/${id}`, promotion, { headers: { 'Content-Type': 'application/json' } });
   }
 }

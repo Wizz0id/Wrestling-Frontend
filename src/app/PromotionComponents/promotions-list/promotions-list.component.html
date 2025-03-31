@@ -2,8 +2,8 @@
   <input type="text" class="search" placeholder="Поиск по промоушенам" [formControl]="searchQuery" (keydown.enter)="onSearchKeyDown($event)">
 </form>
 <div class="wrestler-list">
-  <app-promotion *ngFor="let promotion of promotionList"
+  <app-promotion-card *ngFor="let promotion of promotionList"
                 [promotion]="promotion">
-  </app-promotion>
+  </app-promotion-card>
 </div>
 

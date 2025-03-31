@@ -1,7 +1,8 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Promotion} from '../../DTO/Promotion';
 import {PromotionService} from '../../Service/Promotion.service';
 import {NgIf} from '@angular/common';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-promotion',
@@ -12,11 +13,20 @@ import {NgIf} from '@angular/common';
   templateUrl: './promotion.component.html',
   styleUrl: './promotion.component.css'
 })
-export class PromotionComponent {
-  @Input() promotion!: Promotion;
-  @Output() event = new EventEmitter<number>()
+export class PromotionComponent implements OnInit{
+  promotion!: Promotion;
 
-  constructor(private promotionService: PromotionService) {
+  constructor(private promotionService: PromotionService, private route: ActivatedRoute) {
+  }
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params =>
+    {
+      const promoId = params.get('id');
+      if(promoId){
+        this.promotionService.getPromotionById(promoId).subscribe(promo => this.promotion = promo);
+      }
+    }
+  )
   }
 
   onFileSelected(event: Event) {
@@ -28,7 +38,6 @@ export class PromotionComponent {
         reader.onload = (e: ProgressEvent<FileReader>) => {
           const base64Image = e.target?.result?.toString().split(',')[1];
           if (base64Image) {
-            console.log('Base64 String:', base64Image); // Логирование для проверки
             this.promotion.picture = base64Image;
           }
         };
@@ -37,6 +46,6 @@ export class PromotionComponent {
     }
   }
   updatePromotion() {
-    this.promotionService.updatePromotion(this.promotion.id, this.promotion);
+    this.promotionService.updatePromotion(this.promotion.id, this.promotion).subscribe(promotion => this.promotion = promotion);
   }
 }

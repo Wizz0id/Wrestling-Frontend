@@ -1,11 +1,13 @@
 <div class="wrestler-info" *ngIf="wrestler">
   <h2>{{wrestler.fio}}</h2>
-  <img *ngIf="wrestler.picture" [src]="wrestler.picture" alt="Photo of {{ wrestler.fio }}">
+  <img *ngIf="wrestler.picture" [src]="'data:image/jpeg;base64,' + wrestler.picture" alt="Фотография {{ wrestler.fio }}" title="Фотография {{ wrestler.fio }}" width="300px">
   <p><strong>Рост:</strong> {{ wrestler.height }} см</p>
   <p><strong>Вес:</strong> {{ wrestler.weight }} кг</p>
   <p><strong>Пол:</strong> {{ wrestler.gender === 'MALE' ? 'Мужской' : 'Женский' }}</p>
   <p><strong>Тренер:</strong> {{ wrestler.trainer }}</p>
   <p><strong>Дата начала карьеры:</strong> {{ wrestler.startOfCareer | date: 'dd.MM.yyyy' }}</p>
   <p><strong>Статус:</strong> {{ wrestler.retired ? 'На пенсии' : 'Выступает' }}</p>
-  <img *ngIf="wrestler.promotionPicture" [src]="'data:image/jpeg;base64,' + wrestler.promotionPicture" alt="{{wrestler.promotionName}}">
+  <img *ngIf="promotion.picture" [src]="'data:image/jpeg;base64,' + promotion.picture" alt="{{promotion.name}}" title="{{promotion.name}}" style="cursor: pointer" (click)="ToPromotion()"><br>
+  <input type="file" (change)="onFileSelected($event)" accept="image/*"><br>
+  <button (click)="updateWrestler()">Обновить Рестлера</button>
 </div>

@@ -5,12 +5,16 @@ import {MatchesListComponent} from './MatchComponents/matches-list/matches-list.
 import {EventsListComponent} from './EventComponents/events-list/events-list.component';
 import {WrestlerCardComponent} from './WrestlerComponents/wrestler/wrestler-card.component';
 import {MatchComponent} from './MatchComponents/match/match.component';
+import {TitlesListComponent} from './TitleComponents/titles-list/titles-list.component';
+import {PromotionComponent} from './PromotionComponents/promotion/promotion.component';
 
 export const routes: Routes = [
   {path: 'wrestlers', component: WrestlersListComponent},
   {path: 'wrestlers/:id', component: WrestlerCardComponent},
   {path: 'promotions', component: PromotionsListComponent},
+  {path: 'promotions/:id', component: PromotionComponent},
   {path: 'matches', component: MatchesListComponent},
   {path: 'matches/:id', component: MatchComponent},
-  {path: 'events', component: EventsListComponent}
+  {path: 'events', component: EventsListComponent},
+  {path: 'titles', component: TitlesListComponent}
 ];

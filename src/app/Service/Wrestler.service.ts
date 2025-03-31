@@ -3,6 +3,7 @@ import {environment} from '../enviroment';
 import {HttpClient} from '@angular/common/http';
 import {Observable,} from 'rxjs';
 import {Wrestler} from '../DTO/Wrestler';
+import {WrestlerWithPromotion} from '../DTO/WrestlerWithPromotion';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,12 @@ export class WrestlerService {
     return this.http.get<Wrestler[]>(url);
   }
 
-  getWrestlerById(id: string): Observable<Wrestler>{
+  getWrestlerById(id: string): Observable<WrestlerWithPromotion>{
     const url = `${this.wrestlerUrl}/${id}`;
-    return this.http.get<Wrestler>(url);
+    return this.http.get<WrestlerWithPromotion>(url);
+  }
+
+  updateWrestler(id: number, wrestler: Wrestler): Observable<Wrestler> {
+    return this.http.put<Wrestler>(`${this.wrestlerUrl}/${id}`, wrestler, { headers: { 'Content-Type': 'application/json' } });
   }
 }

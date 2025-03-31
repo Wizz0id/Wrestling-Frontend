@@ -3,11 +3,11 @@ export interface Wrestler{
   fio: string;
   height: number;
   weight: number;
-  picture: number[];
+  picture: string;
   gender: string;
   trainer: string;
   startOfCareer: Date;
   retired: boolean;
-  promotionPicture: number[];
+  promotionPicture: string;
   promotionName: string;
 }

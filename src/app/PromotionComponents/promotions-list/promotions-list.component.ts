@@ -2,15 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {Promotion} from '../../DTO/Promotion';
 import {PromotionService} from '../../Service/Promotion.service';
-import {PromotionComponent} from '../promotion/promotion.component';
 import {NgForOf} from '@angular/common';
+import {PromotionCardComponent} from '../promotion-card/promotion-card.component';
 
 @Component({
   selector: 'app-promotions-list',
   imports: [
-    PromotionComponent,
     NgForOf,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PromotionCardComponent
   ],
   standalone: true,
   templateUrl: './promotions-list.component.html',
