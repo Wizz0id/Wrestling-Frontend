@@ -6,4 +6,5 @@ export interface Match{
   professionalRating: number;
   eventId: number;
   winnerId: number;
+  peoplesRating: number;
 }

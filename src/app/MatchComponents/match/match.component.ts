@@ -4,11 +4,13 @@ import {ActivatedRoute} from '@angular/router';
 import {MatchService} from '../../Service/Match.service';
 import {NgIf} from '@angular/common';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import {MatchesRenewsListComponent} from '../matches-renews-list/matches-renews-list.component';
 
 @Component({
   selector: 'app-match',
   imports: [
-    NgIf
+    NgIf,
+    MatchesRenewsListComponent
   ],
   standalone: true,
   templateUrl: './match.component.html',
@@ -17,7 +19,12 @@ import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 export class MatchComponent implements OnInit{
   match!: Match;
   safeUrl!: SafeResourceUrl;
+  isMatchesRenewsListLoaded: boolean = false;
   constructor(private matchService: MatchService,private route: ActivatedRoute, private sanitizer: DomSanitizer) {}
+
+  loadMatchesRenewsList() {
+    this.isMatchesRenewsListLoaded = true;
+  }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -68,4 +75,6 @@ export class MatchComponent implements OnInit{
     }
     return null;
   }
+
+  protected readonly String = String;
 }
