@@ -1,30 +1,34 @@
 <div class="renew-list">
   <h3>Отзывы</h3>
   <button (click)="toggleReviewForm()">Оставить отзыв</button>
-  <form *ngIf="isReviewFormVisible" (ngSubmit)="submitReview()" [formGroup]="renewForm">
-    <div>
-      <label for="comment">Ваш отзыв:</label>
-      <textarea id="comment" formControlName="renew" required></textarea>
-    </div>
-    <div>
-      <label for="rating">Ваш рейтинг:</label>
-      <select id="rating" formControlName="rating">
-        <option value="0">0</option>
-        <option value="0.5">0.5</option>
-        <option value="1">1</option>
-        <option value="1.5">1.5</option>
-        <option value="2">2</option>
-        <option value="2.5">2.5</option>
-        <option value="3">3</option>
-        <option value="3.5">3.5</option>
-        <option value="4">4</option>
-        <option value="4.5">4.5</option>
-        <option value="5">5</option>
-      </select>
-    </div>
-    <button type="submit">Отправить</button>
-  </form>
-  <app-match-renew *ngFor="let renew of renewList"
-                [renew]="renew">
-  </app-match-renew>
+  @if(isReviewFormVisible)
+  {
+    <form (ngSubmit)="submitReview()" [formGroup]="renewForm">
+      <div>
+        <label for="comment">Ваш отзыв:</label>
+        <textarea id="comment" formControlName="renew" required></textarea>
+      </div>
+      <div>
+        <label for="rating">Ваш рейтинг:</label>
+        <select id="rating" formControlName="rating">
+          <option value="0">0</option>
+          <option value="0.5">0.5</option>
+          <option value="1">1</option>
+          <option value="1.5">1.5</option>
+          <option value="2">2</option>
+          <option value="2.5">2.5</option>
+          <option value="3">3</option>
+          <option value="3.5">3.5</option>
+          <option value="4">4</option>
+          <option value="4.5">4.5</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+      <button type="submit">Отправить</button>
+    </form>
+  }
+  @for (renew of renewList; track $index)
+  {
+    <app-match-renew [renew]=renew></app-match-renew>
+  }
 </div>

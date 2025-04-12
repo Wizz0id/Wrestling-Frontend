@@ -3,7 +3,7 @@ import {WrestlersListComponent} from './WrestlerComponents/wrestlers-list/wrestl
 import {PromotionsListComponent} from './PromotionComponents/promotions-list/promotions-list.component';
 import {MatchesListComponent} from './MatchComponents/matches-list/matches-list.component';
 import {EventsListComponent} from './EventComponents/events-list/events-list.component';
-import {WrestlerCardComponent} from './WrestlerComponents/wrestler/wrestler-card.component';
+import {WrestlerCardComponent} from './WrestlerComponents/wrestler/wrestler.component';
 import {MatchComponent} from './MatchComponents/match/match.component';
 import {TitlesListComponent} from './TitleComponents/titles-list/titles-list.component';
 import {PromotionComponent} from './PromotionComponents/promotion/promotion.component';

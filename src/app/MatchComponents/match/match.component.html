@@ -1,14 +1,20 @@
-<div class="match-card" *ngIf="match">
-  <h2>{{ match.name }}</h2>
-  <p><strong>Тип:</strong> {{ match.type }}</p>
-  <p><strong>Профессиональный рейтинг:</strong> {{ match.professionalRating }}</p>
-  <p><strong>Рейтинг пользователей:</strong> {{ match.peoplesRating }}</p>
-  <p><strong>ID события:</strong> {{ match.eventId }}</p>
-  <p><strong>ID победителя:</strong> {{ match.winnerId }}</p>
+@if(match)
+{
+  <div class="match-card">
+    <h2>{{ match.name }}</h2>
+    <p><strong>Тип:</strong> {{ match.type }}</p>
+    <p><strong>Профессиональный рейтинг:</strong> {{ match.professionalRating }}</p>
+    <p><strong>Рейтинг пользователей:</strong> {{ match.peoplesRating }}</p>
+    <p><strong>ID события:</strong> {{ match.eventId }}</p>
+    <p><strong>ID победителя:</strong> {{ match.winnerId }}</p>
 
-  <!-- Встраивание видео -->
-  <iframe width="560" height="315" [src]="safeUrl" allowfullscreen></iframe>
+    <!-- Встраивание видео -->
+    <iframe width="560" height="315" [src]="safeUrl" allowfullscreen></iframe>
 
-  <button (click)="loadMatchesRenewsList()">Отзывы на матч</button>
-  <app-matches-renews-list *ngIf="isMatchesRenewsListLoaded" [matchId]=String(match.id)></app-matches-renews-list>
-</div>
+    <button (click)="loadMatchesRenewsList()">Отзывы на матч</button>
+    @if (isMatchesRenewsListLoaded){
+      <app-matches-renews-list [matchId]="String(match.id)"></app-matches-renews-list>
+    }
+  </div>
+}
+

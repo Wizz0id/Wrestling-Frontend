@@ -1,13 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Promotion} from '../../DTO/Promotion';
 import {PromotionService} from '../../Service/Promotion.service';
-import {NgIf} from '@angular/common';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-promotion',
   imports: [
-    NgIf
   ],
   standalone:true,
   templateUrl: './promotion.component.html',

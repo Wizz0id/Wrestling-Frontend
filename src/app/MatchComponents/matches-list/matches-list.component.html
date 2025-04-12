@@ -2,7 +2,8 @@
   <input type="text" class="search" placeholder="Поиск по матчам" [formControl]="searchQuery" (keydown.enter)="onSearchKeyDown($event)">
 </form>
 <div class="wrestler-list">
-  <app-match-card *ngFor="let match of matchesList"
-                [match]="match">
-  </app-match-card>
+  @for (match of matchesList; track $index)
+  {
+    <app-match-card [match]=match></app-match-card>
+  }
 </div>

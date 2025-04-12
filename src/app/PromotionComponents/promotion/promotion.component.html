@@ -1,7 +1,7 @@
 <div>
   <h2>{{ promotion.name }}</h2>
   <p>Генеральный директор компании: {{promotion.fioOfCeo}}</p>
-  <img *ngIf="promotion.picture" [src]="'data:image/jpeg;base64,' + promotion.picture" alt="{{promotion.name}}"><br>
+  <img [src]="'data:image/jpeg;base64,' + promotion.picture" alt="{{promotion.name}}"><br>
   <input type="file" (change)="onFileSelected($event)" accept="image/*"><br>
   <button (click)="updatePromotion()">Обновить промоушен</button>
 </div>

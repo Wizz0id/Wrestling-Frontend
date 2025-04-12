@@ -2,14 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {Wrestler} from '../../DTO/Wrestler';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {WrestlerService} from '../../Service/Wrestler.service';
-import {NgForOf} from '@angular/common';
-import {WrestlerComponent} from '../wrestler-card/wrestler.component';
+import {WrestlerComponent} from '../wrestler-card/wrestler-card.component';
 
 @Component({
   selector: 'app-wrestlers-list',
   imports: [
     ReactiveFormsModule,
-    NgForOf,
     WrestlerComponent
   ],
   standalone: true,

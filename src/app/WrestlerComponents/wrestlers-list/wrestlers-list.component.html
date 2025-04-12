@@ -2,7 +2,8 @@
   <input type="text" class="search" placeholder="Поиск по рестлерам" [formControl]="searchQuery" (keydown.enter)="onSearchKeyDown($event)">
 </form>
 <div class="wrestler-list">
-  <app-wrestler *ngFor="let wrestler of wrestlersList"
-                [wrestler]="wrestler">
-  </app-wrestler>
+  @for (wrestler of wrestlersList; track $index)
+  {
+    <app-wrestler-card [wrestler]=wrestler></app-wrestler-card>
+  }
 </div>

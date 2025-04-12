@@ -2,14 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {Match} from '../../DTO/Match';
 import {ActivatedRoute} from '@angular/router';
 import {MatchService} from '../../Service/Match.service';
-import {NgIf} from '@angular/common';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {MatchesRenewsListComponent} from '../matches-renews-list/matches-renews-list.component';
 
 @Component({
   selector: 'app-match',
   imports: [
-    NgIf,
     MatchesRenewsListComponent
   ],
   standalone: true,

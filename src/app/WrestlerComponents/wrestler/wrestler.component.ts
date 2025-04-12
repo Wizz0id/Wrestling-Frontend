@@ -6,14 +6,14 @@ import {DatePipe, NgIf} from '@angular/common';
 import {Promotion} from '../../DTO/Promotion';
 
 @Component({
-  selector: 'app-wrestler-card',
+  selector: 'app-wrestler',
   imports: [
     NgIf,
     DatePipe
   ],
   standalone: true,
-  templateUrl: './wrestler-card.component.html',
-  styleUrl: './wrestler-card.component.css'
+  templateUrl: './wrestler.component.html',
+  styleUrl: './wrestler.component.css'
 })
 export class WrestlerCardComponent implements OnInit{
   wrestler!: Wrestler;

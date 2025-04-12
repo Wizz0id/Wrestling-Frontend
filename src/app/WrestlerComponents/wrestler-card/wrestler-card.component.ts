@@ -4,13 +4,13 @@ import {Router} from '@angular/router';
 import {DatePipe} from '@angular/common';
 
 @Component({
-  selector: 'app-wrestler',
+  selector: 'app-wrestler-card',
   imports: [
     DatePipe
   ],
   standalone: true,
-  templateUrl: './wrestler.component.html',
-  styleUrl: './wrestler.component.css'
+  templateUrl: './wrestler-card.component.html',
+  styleUrl: './wrestler-card.component.css'
 })
 export class WrestlerComponent {
   @Input() wrestler!: Wrestler;
@@ -18,7 +18,7 @@ export class WrestlerComponent {
 
   constructor(private router: Router) {
   }
-  redirectToWrestlerCard():void{
+  redirectToWrestler():void{
     this.router.navigate([`/wrestlers/${this.wrestler.id}`]);
   }
 }

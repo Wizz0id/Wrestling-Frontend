@@ -1,1 +1,9 @@
-<p>titles-list works!</p>
+<form class="search-form">
+  <input type="text" class="search" placeholder="Поиск по титулам" [formControl]="searchQuery" (keydown.enter)="onSearchKeyDown($event)">
+</form>
+<div class="title-list">
+  @for (title of titleList; track $index)
+  {
+    <app-title-card [title]=title></app-title-card>
+  }
+</div>

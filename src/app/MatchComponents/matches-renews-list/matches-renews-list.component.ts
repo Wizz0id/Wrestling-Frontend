@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {NgForOf, NgIf} from '@angular/common';
 import {MatchRenewComponent} from '../match-renew/match-renew.component';
 import {MatchRenew} from '../../DTO/MatchRenew';
 import {MatchRenewService} from '../../Service/MatchRenew.service';
@@ -8,10 +7,8 @@ import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular
 @Component({
   selector: 'app-matches-renews-list',
   imports: [
-    NgForOf,
     MatchRenewComponent,
     FormsModule,
-    NgIf,
     ReactiveFormsModule
   ],
   standalone: true,

@@ -2,14 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {Match} from '../../DTO/Match';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatchService} from '../../Service/Match.service';
-import {NgForOf} from '@angular/common';
 import {MatchCardComponent} from '../match-card/match-card.component';
 
 @Component({
   selector: 'app-matches-list',
   imports: [
     FormsModule,
-    NgForOf,
     ReactiveFormsModule,
     MatchCardComponent
   ],

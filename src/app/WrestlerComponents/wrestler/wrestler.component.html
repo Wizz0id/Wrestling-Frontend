@@ -7,7 +7,7 @@
   <p><strong>Тренер:</strong> {{ wrestler.trainer }}</p>
   <p><strong>Дата начала карьеры:</strong> {{ wrestler.startOfCareer | date: 'dd.MM.yyyy' }}</p>
   <p><strong>Статус:</strong> {{ wrestler.retired ? 'На пенсии' : 'Выступает' }}</p>
-  <img *ngIf="promotion.picture" [src]="'data:image/jpeg;base64,' + promotion.picture" alt="{{promotion.name}}" title="{{promotion.name}}" style="cursor: pointer" (click)="ToPromotion()"><br>
+  <img [src]="'data:image/jpeg;base64,' + promotion.picture" alt="{{promotion.name}}" title="{{promotion.name}}" style="cursor: pointer" (click)="ToPromotion()"><br>
   <input type="file" (change)="onFileSelected($event)" accept="image/*"><br>
   <button (click)="updateWrestler()">Обновить Рестлера</button>
 </div>

@@ -1,13 +1,11 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Promotion} from '../../DTO/Promotion';
 import {PromotionService} from '../../Service/Promotion.service';
-import {NgIf} from '@angular/common';
 import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-promotion-card',
   imports: [
-    NgIf
   ],
   standalone: true,
   templateUrl: './promotion-card.component.html',
