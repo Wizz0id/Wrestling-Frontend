@@ -7,6 +7,8 @@ import {WrestlerCardComponent} from './WrestlerComponents/wrestler/wrestler.comp
 import {MatchComponent} from './MatchComponents/match/match.component';
 import {TitlesListComponent} from './TitleComponents/titles-list/titles-list.component';
 import {PromotionComponent} from './PromotionComponents/promotion/promotion.component';
+import {EventComponent} from './EventComponents/event/event.component';
+import {TitleComponent} from './TitleComponents/title/title.component';
 
 export const routes: Routes = [
   {path: 'wrestlers', component: WrestlersListComponent},
@@ -16,5 +18,7 @@ export const routes: Routes = [
   {path: 'matches', component: MatchesListComponent},
   {path: 'matches/:id', component: MatchComponent},
   {path: 'events', component: EventsListComponent},
-  {path: 'titles', component: TitlesListComponent}
+  {path: 'events/:id', component: EventComponent},
+  {path: 'titles', component: TitlesListComponent},
+  {path: 'titles/:id', component: TitleComponent}
 ];

@@ -1,1 +1,9 @@
-<p>events-list works!</p>
+<form class="search-form">
+  <input type="text" class="search" placeholder="Поиск по событиям" [formControl]="searchQuery" (keydown.enter)="onSearchKeyDown($event)">
+</form>
+<div class="event-list">
+  @for (event of eventList; track $index)
+  {
+    <app-event-card [event]=event></app-event-card>
+  }
+</div>

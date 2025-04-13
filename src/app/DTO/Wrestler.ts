@@ -10,4 +10,5 @@ export interface Wrestler{
   retired: boolean;
   promotionPicture: string;
   promotionName: string;
+  countOfMatches: number;
 }

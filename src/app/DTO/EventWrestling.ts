@@ -1,4 +1,4 @@
-export interface Event{
+export interface EventWrestling {
   id: number;
   name: string;
   date: Date;

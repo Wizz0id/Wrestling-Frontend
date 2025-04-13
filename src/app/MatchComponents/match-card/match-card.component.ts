@@ -15,7 +15,7 @@ export class MatchCardComponent {
 
   constructor(private router: Router) {
   }
-  redirectToMatchCard():void{
-    this.router.navigate([`/matches/${this.match.id}`]);
+  redirectToMatch():void{
+    this.router.navigate([`/matches/${this.match.id}`]).then();
   }
 }

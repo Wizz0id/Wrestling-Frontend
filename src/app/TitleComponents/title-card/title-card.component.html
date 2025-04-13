@@ -1,0 +1,8 @@
+<div class="title-card" (click)="redirectToTitle()">
+  <h2>{{ title.name }} </h2>
+  <img [src]="'data:image/jpeg;base64,' + title.picture" alt="{{title.name}}">
+  <p>
+    Промоушен:
+    <img [src]="'data:image/jpeg;base64,' + title.promotionPicture" alt="{{title.promotionName}}">
+  </p>
+</div>

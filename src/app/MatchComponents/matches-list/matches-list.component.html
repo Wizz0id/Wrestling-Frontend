@@ -1,7 +1,7 @@
 <form class="search-form">
   <input type="text" class="search" placeholder="Поиск по матчам" [formControl]="searchQuery" (keydown.enter)="onSearchKeyDown($event)">
 </form>
-<div class="wrestler-list">
+<div class="matches-list">
   @for (match of matchesList; track $index)
   {
     <app-match-card [match]=match></app-match-card>

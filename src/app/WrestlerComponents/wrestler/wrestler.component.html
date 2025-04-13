@@ -3,10 +3,11 @@
   <img *ngIf="wrestler.picture" [src]="'data:image/jpeg;base64,' + wrestler.picture" alt="Фотография {{ wrestler.fio }}" title="Фотография {{ wrestler.fio }}" width="300px">
   <p><strong>Рост:</strong> {{ wrestler.height }} см</p>
   <p><strong>Вес:</strong> {{ wrestler.weight }} кг</p>
-  <p><strong>Пол:</strong> {{ wrestler.gender === 'MALE' ? 'Мужской' : 'Женский' }}</p>
+  <p><strong>Пол:</strong> {{ wrestler.gender }}</p>
   <p><strong>Тренер:</strong> {{ wrestler.trainer }}</p>
   <p><strong>Дата начала карьеры:</strong> {{ wrestler.startOfCareer | date: 'dd.MM.yyyy' }}</p>
   <p><strong>Статус:</strong> {{ wrestler.retired ? 'На пенсии' : 'Выступает' }}</p>
+  <p><strong>Количество матчей:</strong> {{ wrestler.countOfMatches }}</p>
   <img [src]="'data:image/jpeg;base64,' + promotion.picture" alt="{{promotion.name}}" title="{{promotion.name}}" style="cursor: pointer" (click)="ToPromotion()"><br>
   <input type="file" (change)="onFileSelected($event)" accept="image/*"><br>
   <button (click)="updateWrestler()">Обновить Рестлера</button>

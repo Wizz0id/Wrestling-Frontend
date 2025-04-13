@@ -3,6 +3,7 @@ export interface Title{
   name: string;
   startDate: Date;
   endDate: Date;
-  promotionID: number;
-  wrestlerID: number;
+  picture: string
+  promotionName: string;
+  promotionPicture: string;
 }
