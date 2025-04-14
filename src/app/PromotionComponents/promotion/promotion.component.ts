@@ -2,10 +2,14 @@ import {Component, OnInit} from '@angular/core';
 import {Promotion} from '../../DTO/Promotion';
 import {PromotionService} from '../../Service/Promotion.service';
 import {ActivatedRoute} from '@angular/router';
+import {Wrestler} from '../../DTO/Wrestler';
+import {WrestlerService} from '../../Service/Wrestler.service';
+import {WrestlerComponent} from '../../WrestlerComponents/wrestler-card/wrestler-card.component';
 
 @Component({
   selector: 'app-promotion',
   imports: [
+    WrestlerComponent
   ],
   standalone:true,
   templateUrl: './promotion.component.html',
@@ -13,8 +17,9 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class PromotionComponent implements OnInit{
   promotion!: Promotion;
+  wrestlersList: Wrestler[] = [];
 
-  constructor(private promotionService: PromotionService, private route: ActivatedRoute) {
+  constructor(private promotionService: PromotionService, private route: ActivatedRoute, private wrestlerService: WrestlerService) {
   }
   ngOnInit(): void {
     this.route.paramMap.subscribe(params =>
@@ -45,5 +50,10 @@ export class PromotionComponent implements OnInit{
   }
   updatePromotion() {
     this.promotionService.updatePromotion(this.promotion.id, this.promotion).subscribe(promotion => this.promotion = promotion);
+  }
+
+  getWrestlers()
+  {
+    this.wrestlerService.getWrestlersByPromotion(this.promotion.id).subscribe(wrestlers => this.wrestlersList = wrestlers);
   }
 }

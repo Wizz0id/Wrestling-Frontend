@@ -20,8 +20,15 @@ export class WrestlerService {
   }
 
   getWrestlerById(id: string): Observable<WrestlerWithPromotion>{
-    const url = `${this.wrestlerUrl}/${id}`;
-    return this.http.get<WrestlerWithPromotion>(url);
+    return this.http.get<WrestlerWithPromotion>(`${this.wrestlerUrl}/${id}`);
+  }
+
+  getWrestlersByPromotion(promoID: number): Observable<Wrestler[]>{
+    return this.http.get<Wrestler[]>(`${this.wrestlerUrl}/wrestlers?promotion=${promoID}`);
+  }
+
+  getWrestlersByTitle(titleId: number): Observable<Wrestler[]>{
+    return this.http.get<Wrestler[]>(`${this.wrestlerUrl}/wrestlers?title=${titleId}`);
   }
 
   updateWrestler(id: number, wrestler: Wrestler): Observable<Wrestler> {

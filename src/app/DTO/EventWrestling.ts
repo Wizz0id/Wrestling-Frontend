@@ -2,5 +2,6 @@ export interface EventWrestling {
   id: number;
   name: string;
   date: Date;
-  promotion: string;
+  promotionName: string;
+  promotionPicture: string;
 }

@@ -1,1 +1,15 @@
-<p>title works!</p>
+@if (title){
+  <div class="title-info">
+    <h2>{{title.name}}</h2>
+    <img [src]="'data:image/jpeg;base64,' + title.picture" alt="Фотография {{ title.name }}" title=" {{ title.name }}" width="300px">
+    <img [src]="'data:image/jpeg;base64,' + title.promotionPicture " alt="Фотография {{ title.promotionName }}" title=" {{ title.promotionName }}" width="300px">
+    <button (click)="getChampions()">Рестлеры, получившие данный титул</button>
+    @if(wrestlerList){
+      @for (wrestler of wrestlerList; track $index){
+        <div class="matches-list">
+          <app-wrestler-card [wrestler]="wrestler"></app-wrestler-card>
+        </div>
+      }
+    }
+  </div>
+}

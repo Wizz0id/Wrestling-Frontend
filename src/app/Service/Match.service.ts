@@ -17,7 +17,14 @@ export class MatchService{
     return this.http.get<Match[]>(url);
   }
   getMatchById(id: string): Observable<Match>{
-    const url = `${this.matchUrl}/${id}`;
-    return this.http.get<Match>(url);
+    return this.http.get<Match>(`${this.matchUrl}/${id}`);
+  }
+
+  getMatchesByWrestler(wrestlerId: number): Observable<Match[]>{
+    return this.http.get<Match[]>(`${this.matchUrl}/matches?wrestler=${wrestlerId}`);
+  }
+
+  getMatchesByEvent(eventId: number): Observable<Match[]>{
+    return this.http.get<Match[]>(`${this.matchUrl}/matches?event=${eventId}`)
   }
 }

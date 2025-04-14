@@ -3,5 +3,13 @@
   <p>Генеральный директор компании: {{promotion.fioOfCeo}}</p>
   <img [src]="'data:image/jpeg;base64,' + promotion.picture" alt="{{promotion.name}}"><br>
   <input type="file" (change)="onFileSelected($event)" accept="image/*"><br>
+  <button (click)="getWrestlers()">Рестлеры</button>
+  @if (wrestlersList){
+    <div class="wrestlers-list">
+      @for (wrestler of wrestlersList; track $index){
+        <app-wrestler-card [wrestler]="wrestler"></app-wrestler-card>
+      }
+    </div>
+  }
   <button (click)="updatePromotion()">Обновить промоушен</button>
 </div>

@@ -2,14 +2,12 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {EventRenew} from '../../DTO/EventRenew';
 import {EventRenewService} from '../../Service/EventRenew.service';
-import {MatchRenewComponent} from '../../MatchComponents/match-renew/match-renew.component';
 import {EventRenewComponent} from '../event-renew/event-renew.component';
 
 @Component({
   selector: 'app-events-renews-list',
   imports: [
     FormsModule,
-    MatchRenewComponent,
     ReactiveFormsModule,
     EventRenewComponent
   ],

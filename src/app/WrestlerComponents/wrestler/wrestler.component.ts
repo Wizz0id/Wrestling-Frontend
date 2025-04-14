@@ -2,14 +2,21 @@ import {Component, OnInit} from '@angular/core';
 import {WrestlerService} from '../../Service/Wrestler.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Wrestler} from '../../DTO/Wrestler';
-import {DatePipe, NgIf} from '@angular/common';
+import {DatePipe} from '@angular/common';
 import {Promotion} from '../../DTO/Promotion';
+import {Match} from '../../DTO/Match';
+import {MatchService} from '../../Service/Match.service';
+import {MatchCardComponent} from '../../MatchComponents/match-card/match-card.component';
+import {TitleService} from '../../Service/Title.service';
+import {Title} from '../../DTO/Title';
+import {TitleCardComponent} from '../../TitleComponents/title-card/title-card.component';
 
 @Component({
   selector: 'app-wrestler',
   imports: [
-    NgIf,
-    DatePipe
+    DatePipe,
+    MatchCardComponent,
+    TitleCardComponent
   ],
   standalone: true,
   templateUrl: './wrestler.component.html',
@@ -18,7 +25,11 @@ import {Promotion} from '../../DTO/Promotion';
 export class WrestlerCardComponent implements OnInit{
   wrestler!: Wrestler;
   promotion!: Promotion;
-  constructor(private wrestlerService: WrestlerService, private route: ActivatedRoute, private router: Router) {
+  matchList: Match[] = [];
+  titleList: Title[] = [];
+
+  constructor(private wrestlerService: WrestlerService, private route: ActivatedRoute, private router: Router,
+              private matchService: MatchService, private titleService: TitleService) {
   }
 
   ngOnInit(): void {
@@ -53,8 +64,14 @@ export class WrestlerCardComponent implements OnInit{
   updateWrestler() {
     this.wrestlerService.updateWrestler(this.wrestler.id, this.wrestler).subscribe(wrestler => this.wrestler = wrestler);
   }
+  getMatches(){
+    this.matchService.getMatchesByWrestler(this.wrestler.id).subscribe(matches => this.matchList = matches);
+  }
+  getTitles(){
+    this.titleService.getTitlesByWrestler(this.wrestler.id).subscribe(titles => this.titleList = titles)
+  }
   ToPromotion()
   {
-    this.router.navigate([`/promotions/${this.promotion.id}`])
+    this.router.navigate([`/promotions/${this.promotion.id}`]).then();
   }
 }

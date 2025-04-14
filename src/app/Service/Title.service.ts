@@ -19,8 +19,11 @@ export class TitleService {
   }
 
   getTitleById(id: string): Observable<Title>{
-    const url = `${this.titleUrl}/${id}`;
-    return this.http.get<Title>(url);
+    return this.http.get<Title>(`${this.titleUrl}/${id}`);
+  }
+
+  getTitlesByWrestler(wrestlerId: number): Observable<Title[]>{
+    return this.http.get<Title[]>(`${this.titleUrl}/titles?wrestler=${wrestlerId}`);
   }
 
   updateTitle(id: number, title: Title): Observable<Title> {
