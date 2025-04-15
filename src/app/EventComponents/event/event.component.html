@@ -3,17 +3,37 @@
     <h2>{{event.name}}</h2>
     <p>Дата: {{event.date}}</p>
     <p>Промоушен: {{event.promotionName}}</p>
-    <button (click)="loadRenewsList()">Отзывы на событие</button>
-    @if(isRenewLoaded){
-      <app-events-renews-list [eventID]="String(event.id)"></app-events-renews-list>
-    }
-    <button (click)="getAllMatches()">Матчи события</button>
+    <section id="button-container" style="display: flex; flex-direction: column">
+      <div class="container" (click)="getAllMatches()">
+        <div class="button v17">
+          <span class="label">Матчи события</span>
+          <span class="icon">
+                <span></span>
+            </span>
+          <span class="icon2">
+            </span>
+        </div>
+      </div>
+      <div class="container" (click)="loadRenewsList()">
+        <div class="button v17">
+          <span class="label">Отзывы на событие</span>
+          <span class="icon">
+                <span></span>
+            </span>
+          <span class="icon2">
+            </span>
+        </div>
+      </div>
+    </section>
     @if (matchList){
       @for (match of matchList; track $index){
         <div class="match-list">
           <app-match-card [match]="match"></app-match-card>
         </div>
       }
+    }
+    @if(isRenewLoaded){
+      <app-events-renews-list [eventID]="String(event.id)"></app-events-renews-list>
     }
   </div>
 }

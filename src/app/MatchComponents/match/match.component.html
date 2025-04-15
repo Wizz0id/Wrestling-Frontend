@@ -10,8 +10,18 @@
 
     <!-- Встраивание видео -->
     <iframe width="560" height="315" [src]="safeUrl" allowfullscreen></iframe>
-
-    <button (click)="loadMatchesRenewsList()">Отзывы на матч</button>
+    <section id="button-container">
+      <div class="container" (click)="loadMatchesRenewsList()">
+        <div class="button v17">
+          <span class="label">Отзывы на матч</span>
+          <span class="icon">
+                <span></span>
+            </span>
+          <span class="icon2">
+            </span>
+        </div>
+      </div>
+    </section>
     @if (isMatchesRenewsListLoaded){
       <app-matches-renews-list [matchId]="String(match.id)"></app-matches-renews-list>
     }

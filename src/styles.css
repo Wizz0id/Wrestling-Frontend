@@ -1,1 +1,217 @@
-/* You can add global styles to this file, and also import other style files */
+html{
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1c1c1c;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  background-color: #a13434; /* Светло-бардовый */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+header nav{
+  margin: 0 3% 0 0;
+}
+
+app-root{
+  display: grid;
+  position: absolute;
+  top: 104px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.logo {
+  flex: 1;
+  padding: 15px;
+}
+
+.logo .placeholder {
+  color: #eeebeb;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.main .route nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  background-color: #b84b4b;
+  position: relative;
+  z-index: 1000;
+}
+
+.main .route nav ul li {
+  margin: 0 15px;
+}
+
+.main .route nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 15px;
+  transition: background-color 0.3s ease;
+}
+
+.main .route nav ul li a:hover {
+  background-color: rgba(87, 67, 67, 0.2);
+}
+
+.main .route nav ul li a.active {
+  background-color: #b84b4b;
+}
+
+.content-wrapper {
+  margin: 0;
+  height: 100%;
+  display: flex;
+  position: relative;
+  flex: 1;
+  padding: 0;
+}
+
+.content {
+  flex: 1;
+  background-color: rgba(10, 10, 10, 0.82); /* Прозрачный фон */
+  position: relative;
+  z-index: 1; /* указываем, что контент должен быть выше фона */
+  padding: 20px; /* Добавляем немного отступов */
+  overflow-y: auto;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  backdrop-filter: blur(3px); /* Добавляем размытие фона */
+
+}
+
+.animation {
+  position: fixed; /* Задаем абсолютное позиционирование */
+  top: 0;
+  left: 0;
+  width: 100%; /* Ширина на всю страницу */
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  transition: background-image 5s;
+  z-index: 0; /* фон под контентом */
+  mix-blend-mode: hard-light;
+  /*opacity: 0.2;*/
+}
+
+
+section#button-container{
+  display: inline-block;
+  width: 100%;
+  .button{
+    margin: 20px;
+    float: left;
+    position: relative;
+    font-family: arial, serif;
+    text-transform: uppercase;
+    color: #fff;
+    cursor: pointer;
+    .label{
+      padding: 10px;
+      display: inline-block;
+    }
+    &.v17{
+      &:hover{
+        .icon{
+          &:before, &:after{
+            width: 100%;
+          }
+          span {
+            &:before, &:after {
+              height: 100%;
+            }
+          }
+        }
+        .icon2{
+          transform: skew(-40deg, 0deg) scale(1);
+          background: #f0202f;
+          z-index: -1;
+        }
+      }
+      .label{
+        padding: 10px 22px;
+      }
+      .icon2 {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform: skew(-40deg, 0deg) scaleX(0.2) scaleY(0.5);
+        transition: all 0.2s;
+        transition-delay: 0.2s;
+      }
+      .icon{
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform: skew(-40deg, 0deg);
+        transition: all 0.2s;
+        &:before, &:after{
+          content: '';
+          height: 1px;
+          width: 30px;
+          position: absolute;
+          display: block;
+          background: #f0202f;
+          transition: all 0.2s;
+          transition-delay: 0.2s;
+        }
+        &:before{
+          left: 0;
+          top: 0;
+        }
+        &:after{
+          right: 0;
+          bottom: 0;
+        }
+        span{
+          &:before, &:after{
+            content: '';
+            background: #f0202f;
+            position: absolute;
+            display: block;
+            width: 2px;
+            height: 30px;
+            transition: all 0.2s;
+            transition-delay: 0.2s;
+          }
+          &:before{
+            left: 0;
+            top: 0;
+          }
+          &:after{
+            right: 0;
+            bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
+

@@ -1,19 +1,19 @@
-.search-form{
-  display: flex;
-  justify-content: center;
+.search-form {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.search {
+  padding: 10px;
+  width: 300px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .wrestler-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-}
-app-wrestler-card {
-  box-sizing: border-box;
-  transition-duration: 500ms;
-}
-
-app-wrestler-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }

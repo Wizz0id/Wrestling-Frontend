@@ -10,9 +10,30 @@
     <p><strong>Статус:</strong> {{ wrestler.retired ? 'На пенсии' : 'Выступает' }}</p>
     <p><strong>Количество матчей:</strong> {{ wrestler.countOfMatches }}</p>
     <img [src]="'data:image/jpeg;base64,' + promotion.picture" alt="{{promotion.name}}" title="{{promotion.name}}" style="cursor: pointer" (click)="ToPromotion()"><br>
-    <input type="file" (change)="onFileSelected($event)" accept="image/*"><br>
-    <button (click)="updateWrestler()">Обновить Рестлера</button>
-    <button (click)="getMatches()">Матчи</button>
+<!--    <input type="file" (change)="onFileSelected($event)" accept="image/*"><br>-->
+<!--    <button (click)="updateWrestler()">Обновить Рестлера</button>-->
+    <section id="button-container">
+      <div class="container" (click)="getMatches()">
+        <div class="button v17">
+          <span class="label">Матчи</span>
+          <span class="icon">
+                <span></span>
+            </span>
+          <span class="icon2">
+            </span>
+        </div>
+      </div>
+      <div class="container" (click)="getTitles()">
+        <div class="button v17">
+          <span class="label">Титулы</span>
+          <span class="icon">
+                <span></span>
+            </span>
+          <span class="icon2">
+            </span>
+        </div>
+      </div>
+    </section>
     @if(matchList){
       @for (match of matchList; track $index){
         <div class="matches-list">
@@ -20,7 +41,6 @@
         </div>
       }
     }
-    <button (click)="getTitles()">Титулы</button>
     @if(titleList){
       @for (title of titleList; track $index){
         <div class="title-list">

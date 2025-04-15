@@ -3,7 +3,18 @@
     <h2>{{title.name}}</h2>
     <img [src]="'data:image/jpeg;base64,' + title.picture" alt="Фотография {{ title.name }}" title=" {{ title.name }}" width="300px">
     <img [src]="'data:image/jpeg;base64,' + title.promotionPicture " alt="Фотография {{ title.promotionName }}" title=" {{ title.promotionName }}" width="300px">
-    <button (click)="getChampions()">Рестлеры, получившие данный титул</button>
+    <section id="button-container">
+      <div class="container" (click)="getChampions()">
+        <div class="button v17">
+          <span class="label">Рестлеры, получившие данный титул</span>
+          <span class="icon">
+                <span></span>
+            </span>
+          <span class="icon2">
+            </span>
+        </div>
+      </div>
+    </section>
     @if(wrestlerList){
       @for (wrestler of wrestlerList; track $index){
         <div class="matches-list">

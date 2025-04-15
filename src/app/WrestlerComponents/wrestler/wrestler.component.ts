@@ -62,7 +62,10 @@ export class WrestlerCardComponent implements OnInit{
     }
   }
   updateWrestler() {
-    this.wrestlerService.updateWrestler(this.wrestler.id, this.wrestler).subscribe(wrestler => this.wrestler = wrestler);
+    this.wrestlerService.updateWrestler(this.wrestler.id, this.wrestler).subscribe(wrestler => {
+      wrestler.countOfMatches = this.wrestler.countOfMatches;
+      this.wrestler = wrestler;
+    });
   }
   getMatches(){
     this.matchService.getMatchesByWrestler(this.wrestler.id).subscribe(matches => this.matchList = matches);
