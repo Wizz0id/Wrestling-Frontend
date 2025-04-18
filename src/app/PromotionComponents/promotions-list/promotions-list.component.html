@@ -1,7 +1,7 @@
 <form class="search-form">
   <input type="text" class="search" placeholder="Поиск по промоушенам" [formControl]="searchQuery" (keydown.enter)="onSearchKeyDown($event)">
 </form>
-<div class="wrestler-list">
+<div class="promotion-list">
   @for(promotion of promotionList; track $index){
     <app-promotion-card [promotion]=promotion></app-promotion-card>
   }

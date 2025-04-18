@@ -1,0 +1,47 @@
+.wrestler-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  background-color: #1e1e1e;
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.wrestler-info {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.wrestler-info h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.wrestler-info p {
+  margin: 5px 0;
+}
+
+.wrestler-image-container {
+  float: right;
+  position: relative;
+}
+
+.gimmicks {
+  margin-top: 10px;
+  font-style: italic;
+  color: #ffffff;
+}
+
+.container {
+  cursor: pointer;
+}
+
+.wrestler-desc{
+  border-style: dotted;
+  width: max-content;
+  padding: 0 30px 0 10px;
+  border-color: #b84b4b;
+}

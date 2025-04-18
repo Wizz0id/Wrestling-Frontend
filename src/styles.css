@@ -98,7 +98,6 @@ app-root{
   max-width: 1000px;
   margin: 0 auto;
   backdrop-filter: blur(3px); /* Добавляем размытие фона */
-
 }
 
 .animation {
@@ -109,7 +108,7 @@ app-root{
   height: 100vh;
   background-position: center;
   background-size: cover;
-  transition: background-image 5s;
+  transition: background-image 2s;
   z-index: 0; /* фон под контентом */
   mix-blend-mode: hard-light;
   /*opacity: 0.2;*/

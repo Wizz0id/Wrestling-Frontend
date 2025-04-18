@@ -1,8 +1,30 @@
 .promotion-card-mini {
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+  transition: transform 0.2s;
+  cursor: pointer;
   display: flex;
-  align-items: center;
-  border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 5px;
-  position: relative;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+}
+
+.promotion-card-mini:hover{
+  transform: scale(1.05);
+}
+
+.promotion-card-mini h2{
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.promotion-card-mini p {
+  font-size: 14px;
+  color: #ffffff;
+  margin: 5px 0;
 }

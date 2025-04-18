@@ -1,0 +1,8 @@
+.promo-desc p{
+  float: left;
+}
+
+.promo-desc img {
+  float: right;
+  width: 5em;
+}

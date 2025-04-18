@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {WrestlerService} from '../../Service/Wrestler.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Wrestler} from '../../DTO/Wrestler';
@@ -10,26 +10,37 @@ import {MatchCardComponent} from '../../MatchComponents/match-card/match-card.co
 import {TitleService} from '../../Service/Title.service';
 import {Title} from '../../DTO/Title';
 import {TitleCardComponent} from '../../TitleComponents/title-card/title-card.component';
+import {AppComponent} from '../../app.component';
+import {GimmicksListComponent} from '../gimmicks-list/gimmicks-list.component';
 
 @Component({
   selector: 'app-wrestler',
   imports: [
     DatePipe,
     MatchCardComponent,
-    TitleCardComponent
+    TitleCardComponent,
+    GimmicksListComponent
   ],
   standalone: true,
   templateUrl: './wrestler.component.html',
   styleUrl: './wrestler.component.css'
 })
-export class WrestlerCardComponent implements OnInit{
+export class WrestlerCardComponent implements OnInit, OnDestroy{
   wrestler!: Wrestler;
   promotion!: Promotion;
   matchList: Match[] = [];
   titleList: Title[] = [];
 
   constructor(private wrestlerService: WrestlerService, private route: ActivatedRoute, private router: Router,
-              private matchService: MatchService, private titleService: TitleService) {
+              private matchService: MatchService, private titleService: TitleService, private appComp: AppComponent) {
+  }
+
+  ngOnDestroy() {
+    const background = document.querySelector<HTMLElement>('.animation');
+    if (background) {
+      background.classList.remove('static');
+      this.appComp.changeBackground();
+    }
   }
 
   ngOnInit(): void {
@@ -40,6 +51,11 @@ export class WrestlerCardComponent implements OnInit{
         this.wrestlerService.getWrestlerById(wrestlerId).subscribe(wrestlerWithPromo => {
           this.wrestler = wrestlerWithPromo.wrestler;
           this.promotion = wrestlerWithPromo.promotion;
+          const background = document.querySelector<HTMLElement>('.animation');
+          if (background) {
+            background.classList.add('static');
+            background.style.backgroundImage = `url('data:image/jpeg;base64,${wrestlerWithPromo.wrestler.picture}')`;
+          }
         })
       }
     })

@@ -1,5 +1,5 @@
 <div class="promotion-card-mini" (click)="ToPromotion()">
   <h2>{{ promotion.name }}</h2>
   <p>Генеральный директор компании: {{promotion.fioOfCeo}}</p>
-  <img [src]="'data:image/jpeg;base64,' + promotion.picture" alt="{{promotion.name}}">
+  <img [src]="'data:image/jpeg;base64,' + promotion.picture" alt="{{promotion.name}}" style="width: 5em; align-self: center">
 </div>
