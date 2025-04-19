@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="back-box">
+    <div class="loginMsg" [class.visibility]="formType !== 'login'">
+      <div class="text-content">
+        <p class="title">Первый раз?</p>
+        <button (click)="switchToRegister()">Зарегистрироваться</button>
+      </div>
+    </div>
+    <div class="signupMsg" [class.visibility]="formType !== 'register'">
+      <div class="text-content">
+        <p class="title">Уже есть аккаунт?</p>
+        <button (click)="switchToLogin()">Войти</button>
+      </div>
+    </div>
+  </div>
+  <div class="front-box" [class.moving]="formType !== 'login'">
+    @if (formType === 'login'){
+      <app-login ></app-login>
+    } @else {
+      <app-register></app-register>
+    }
+  </div>
+</div>

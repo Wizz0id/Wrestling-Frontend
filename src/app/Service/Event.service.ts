@@ -17,7 +17,6 @@ export class EventService{
     return this.http.get<EventWrestling[]>(url);
   }
   getEventById(id: string): Observable<EventWrestling>{
-    const url = `${this.eventUrl}/${id}`;
-    return this.http.get<EventWrestling>(url);
+    return this.http.get<EventWrestling>(`${this.eventUrl}/${id}`);
   }
 }

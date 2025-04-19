@@ -1,15 +1,18 @@
 import {Component, OnInit} from '@angular/core';
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import {AuthComponent} from './AuthComponents/auth/auth.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, AuthComponent],
   standalone:true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit{
   title = 'Wrestling-Frontend';
+  showAuthForm: boolean = false;
+  formType: 'login' | 'register' = 'login';
   backgrounds: string[] = [
     '/background/background1.jpg',
     '/background/background2.jpg',
@@ -32,6 +35,21 @@ export class AppComponent implements OnInit{
     '/background/background19.jpg',
     '/background/background20.jpg'
   ];
+  constructor() {
+    document.getElementById('loginButton')?.addEventListener('click', () => {
+      this.showAuthForm = true;
+      this.formType = 'login';
+    });
+
+    document.getElementById('registerButton')?.addEventListener('click', () => {
+      this.showAuthForm = true;
+      this.formType = 'register';
+    });
+  }
+
+  closeForm() {
+    this.showAuthForm = false;
+  }
 
   ngOnInit(): void {
     setInterval(() => this.changeBackground(), 20000);

@@ -6,10 +6,10 @@ import {WrestlerComponent} from '../wrestler-card/wrestler-card.component';
 
 @Component({
   selector: 'app-wrestlers-list',
-  imports: [
-    ReactiveFormsModule,
-    WrestlerComponent
-  ],
+    imports: [
+        ReactiveFormsModule,
+        WrestlerComponent,
+    ],
   standalone: true,
   templateUrl: './wrestlers-list.component.html',
   styleUrl: './wrestlers-list.component.css'
