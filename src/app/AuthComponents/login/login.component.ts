@@ -20,7 +20,7 @@ export class LoginComponent {
         username: username,
         password: password
       }
-      this.authService.login(user).subscribe(respUser=> localStorage.setItem("user", respUser.username))
+      this.authService.login(user);
     }
   }
 }

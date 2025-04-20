@@ -1,23 +1,28 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../enviroment';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {User} from '../DTO/User';
-import {Observable} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: "root"
 })
 export class AuthService{
   private authUrl = `${environment.apiUrl}/${environment.authApiUrl}`;
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   }
-  login(user: User): Observable<User>{
-    const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.post<User>(`${this.authUrl}/login`, user, { headers, withCredentials: true });
+  login(user: User): Subscription{
+    const username = user.username;
+    const password = user.password;
+    return this.http.post(`${this.authUrl}/login`, { username, password })
+      .subscribe((response: any) => {
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('username', username);
+        this.router.navigate(['/']).then();
+      });
   }
   register(user: User): Observable<boolean>{
-    const url = `${this.authUrl}/register`;
-    const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.post<boolean>(url, user, { headers, withCredentials: true });
+    return this.http.post<boolean>(`${this.authUrl}/register`, user);
   }
 }
