@@ -37,7 +37,8 @@ export class MatchComponent implements OnInit{
       const matchId = params.get('id');
       if (matchId) {
         this.matchService.getMatchById(matchId).subscribe(match => {
-          this.match = match;
+          this.match = match.match;
+          this.match.peoplesRating = match.rating;
           if (this.isYouTubeUrl(this.match.url)) {
             const videoId = this.extractYouTubeVideoId(this.match.url);
             if (videoId) {

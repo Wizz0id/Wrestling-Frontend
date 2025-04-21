@@ -8,7 +8,7 @@ import {EventWrestling} from '../DTO/EventWrestling';
   providedIn: "root"
 })
 export class EventService{
-  private eventUrl = `${environment.apiUrl}/${environment.eventApiUrl}`;
+  private eventUrl = `${environment.api}/${environment.eventApiUrl}`;
   constructor(private http: HttpClient) {
   }
 

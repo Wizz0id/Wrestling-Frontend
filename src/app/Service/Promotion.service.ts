@@ -8,7 +8,7 @@ import {Promotion} from '../DTO/Promotion';
   providedIn: 'root'
 })
 export class PromotionService {
-  private promotionUrl = `${environment.apiUrl}/${environment.promotionApiUrl}`;
+  private promotionUrl = `${environment.api}/${environment.promotionApiUrl}`;
 
   constructor(private http: HttpClient) {
   }

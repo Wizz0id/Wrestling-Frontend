@@ -8,7 +8,7 @@ import {EventRenew} from '../DTO/EventRenew';
   providedIn: "root"
 })
 export class EventRenewService {
-  private eventUrl = `${environment.apiUrl}/${environment.eventApiUrl}`;
+  private eventUrl = `${environment.api}/${environment.eventApiUrl}`;
 
   constructor(private http: HttpClient) {
   }

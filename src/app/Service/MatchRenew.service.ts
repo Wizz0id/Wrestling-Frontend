@@ -8,7 +8,7 @@ import {MatchRenew} from '../DTO/MatchRenew';
   providedIn: "root"
 })
 export class MatchRenewService {
-  private matchUrl = `${environment.apiUrl}/${environment.matchApiUrl}`;
+  private matchUrl = `${environment.api}/${environment.matchApiUrl}`;
 
   constructor(private http: HttpClient) {
   }

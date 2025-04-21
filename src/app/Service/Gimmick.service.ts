@@ -8,7 +8,7 @@ import {Gimmick} from '../DTO/Gimmick';
   providedIn: "root"
 })
 export class GimmickService {
-  private gimmickApiUrl = `${environment.apiUrl}/${environment.wrestlerApiUrl}`;
+  private gimmickApiUrl = `${environment.api}/${environment.wrestlerApiUrl}`;
 
   constructor(private http: HttpClient) {
   }
