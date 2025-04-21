@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {environment} from '../enviroment';
+import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable,} from 'rxjs';
 import {Promotion} from '../DTO/Promotion';
@@ -8,7 +8,7 @@ import {Promotion} from '../DTO/Promotion';
   providedIn: 'root'
 })
 export class PromotionService {
-  private promotionUrl = `${environment.api}/${environment.promotionApiUrl}`;
+  private promotionUrl = `${environment.apiUrl}/${environment.promotionApiUrl}`;
 
   constructor(private http: HttpClient) {
   }

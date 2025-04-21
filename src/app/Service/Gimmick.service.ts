@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {environment} from '../enviroment';
+import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Gimmick} from '../DTO/Gimmick';
@@ -8,7 +8,7 @@ import {Gimmick} from '../DTO/Gimmick';
   providedIn: "root"
 })
 export class GimmickService {
-  private gimmickApiUrl = `${environment.api}/${environment.wrestlerApiUrl}`;
+  private gimmickApiUrl = `${environment.apiUrl}/${environment.wrestlerApiUrl}`;
 
   constructor(private http: HttpClient) {
   }

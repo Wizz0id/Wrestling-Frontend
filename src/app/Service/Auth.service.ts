@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {environment} from '../enviroment';
+import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {User} from '../DTO/User';
 import {Observable, Subscription} from 'rxjs';
@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
   providedIn: "root"
 })
 export class AuthService{
-  private authUrl = `${environment.api}/${environment.authApiUrl}`;
+  private authUrl = `${environment.apiUrl}/${environment.authApiUrl}`;
 
   private isAuthenticated:boolean = false;
   constructor(private http: HttpClient, private router: Router) {
@@ -22,6 +22,7 @@ export class AuthService{
       .subscribe((response: any) => {
         localStorage.setItem('token', response.token);
         localStorage.setItem('username', username);
+        localStorage.setItem('role', response.role);
         this.isAuthenticated = true;
         this.router.navigate(['/']).then();
       });

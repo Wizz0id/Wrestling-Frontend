@@ -1,0 +1,47 @@
+<form (ngSubmit)="submitWrestler()" [formGroup]="wrestlerForm">
+  <div>
+    <label for="fio">ФИО:</label>
+    <input id="fio" formControlName="fio" required />
+  </div>
+  <div>
+    <label for="height">Рост (см):</label>
+    <input id="height" formControlName="height" type="number" required />
+  </div>
+  <div>
+    <label for="weight">Вес (кг):</label>
+    <input id="weight" formControlName="weight" type="number" required />
+  </div>
+  <div>
+    <label for="gender">Пол:</label>
+    <select id="gender" formControlName="gender" required>
+      <option value="MALE">Мужской</option>
+      <option value="FEMALE">Женский</option>
+    </select>
+  </div>
+  <div>
+    <label for="trainer">Тренер:</label>
+    <input id="trainer" formControlName="trainer" required />
+  </div>
+  <div>
+    <label for="startOfCareer">Дата начала карьеры:</label>
+    <input id="startOfCareer" formControlName="startOfCareer" type="date" required />
+  </div>
+  <div>
+    <label for="retired">Статус:</label>
+    <select id="retired" formControlName="retired" required>
+      <option value="true">На пенсии</option>
+      <option value="false">Выступает</option>
+    </select>
+  </div>
+  <div>
+    <label for="picture">Фотография:</label>
+    <input id="picture" type="file" (change)="onFileSelected($event)" accept="image/*" />
+  </div>
+  <div type="submit" class="button v17" (click)="submitWrestler()">
+    <span class="label">Создать</span>
+    <span class="icon">
+      <span></span>
+    </span>
+    <span class="icon2"></span>
+  </div>
+</form>

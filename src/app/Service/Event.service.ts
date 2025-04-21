@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {environment} from '../enviroment';
+import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {EventWrestling} from '../DTO/EventWrestling';
@@ -8,7 +8,7 @@ import {EventWrestling} from '../DTO/EventWrestling';
   providedIn: "root"
 })
 export class EventService{
-  private eventUrl = `${environment.api}/${environment.eventApiUrl}`;
+  private eventUrl = `${environment.apiUrl}/${environment.eventApiUrl}`;
   constructor(private http: HttpClient) {
   }
 

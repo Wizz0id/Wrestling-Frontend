@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {environment} from '../enviroment';
+import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable,} from 'rxjs';
 import {Wrestler} from '../DTO/Wrestler';
@@ -9,7 +9,7 @@ import {WrestlerWithPromotion} from '../DTO/WrestlerWithPromotion';
   providedIn: 'root'
 })
 export class WrestlerService {
-  private wrestlerUrl = `${environment.api}/${environment.wrestlerApiUrl}`;
+  private wrestlerUrl = `${environment.apiUrl}/${environment.wrestlerApiUrl}`;
 
   constructor(private http: HttpClient) {
   }
@@ -33,6 +33,10 @@ export class WrestlerService {
 
   getWrestlersByTitle(titleId: number): Observable<Wrestler[]>{
     return this.http.get<Wrestler[]>(`${this.wrestlerUrl}/wrestlers?title=${titleId}`);
+  }
+
+  createWrestler(wrestler: Wrestler): Observable<Wrestler> {
+    return this.http.put<Wrestler>(`${this.wrestlerUrl}`, wrestler, { headers: { 'Content-Type': 'application/json' } });
   }
 
   updateWrestler(id: number, wrestler: Wrestler): Observable<Wrestler> {

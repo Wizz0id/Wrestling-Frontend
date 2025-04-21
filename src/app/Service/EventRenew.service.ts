@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {environment} from '../enviroment';
+import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {EventRenew} from '../DTO/EventRenew';
@@ -8,7 +8,7 @@ import {EventRenew} from '../DTO/EventRenew';
   providedIn: "root"
 })
 export class EventRenewService {
-  private eventUrl = `${environment.api}/${environment.eventApiUrl}`;
+  private eventUrl = `${environment.apiUrl}/${environment.eventApiUrl}`;
 
   constructor(private http: HttpClient) {
   }

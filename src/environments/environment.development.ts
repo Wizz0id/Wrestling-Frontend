@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  api: 'http://localhost:8080',
+  apiUrl: 'http://localhost:8080',
   authApiUrl: 'auth/api/v1',
   wrestlerApiUrl: 'wrestlers/api/v1',
   promotionApiUrl: 'promotions/api/v1',

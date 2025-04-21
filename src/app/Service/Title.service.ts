@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {environment} from '../enviroment';
+import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Title} from '../DTO/Title';
@@ -8,7 +8,7 @@ import {Title} from '../DTO/Title';
   providedIn: 'root'
 })
 export class TitleService {
-  private titleUrl = `${environment.api}/${environment.titleApiUrl}`;
+  private titleUrl = `${environment.apiUrl}/${environment.titleApiUrl}`;
 
   constructor(private http: HttpClient) {
   }

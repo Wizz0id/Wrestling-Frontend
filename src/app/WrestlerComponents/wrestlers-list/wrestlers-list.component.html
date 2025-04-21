@@ -7,3 +7,7 @@
     <app-wrestler-card [wrestler]=wrestler></app-wrestler-card>
   }
 </div>
+<button (click)="createWrestler()">Добавить рестлера</button>
+@if(role!="ADMIN"){
+  <button (click)="createWrestler()">Добавить рестлера</button>
+}

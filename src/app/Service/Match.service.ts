@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {environment} from '../enviroment';
+import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Match} from '../DTO/Match';
@@ -9,7 +9,7 @@ import {MatchWithRatingDTO} from '../DTO/MatchWithRatingDTO';
   providedIn: "root"
 })
 export class MatchService{
-  private matchUrl = `${environment.api}/${environment.matchApiUrl}`;
+  private matchUrl = `${environment.apiUrl}/${environment.matchApiUrl}`;
 
   constructor(private http: HttpClient) {
   }

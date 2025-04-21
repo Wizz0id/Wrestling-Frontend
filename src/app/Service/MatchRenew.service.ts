@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {environment} from '../enviroment';
+import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {MatchRenew} from '../DTO/MatchRenew';
@@ -8,7 +8,7 @@ import {MatchRenew} from '../DTO/MatchRenew';
   providedIn: "root"
 })
 export class MatchRenewService {
-  private matchUrl = `${environment.api}/${environment.matchApiUrl}`;
+  private matchUrl = `${environment.apiUrl}/${environment.matchApiUrl}`;
 
   constructor(private http: HttpClient) {
   }
