@@ -9,7 +9,7 @@ import {WrestlerWithPromotion} from '../DTO/WrestlerWithPromotion';
   providedIn: 'root'
 })
 export class WrestlerService {
-  private wrestlerUrl = `${environment.apiUrl}/${environment.wrestlerApiUrl}`;
+  private wrestlerUrl = `${environment.api}/${environment.wrestlerApiUrl}`;
 
   constructor(private http: HttpClient) {
   }

@@ -8,7 +8,7 @@ import {Title} from '../DTO/Title';
   providedIn: 'root'
 })
 export class TitleService {
-  private titleUrl = `${environment.apiUrl}/${environment.titleApiUrl}`;
+  private titleUrl = `${environment.api}/${environment.titleApiUrl}`;
 
   constructor(private http: HttpClient) {
   }

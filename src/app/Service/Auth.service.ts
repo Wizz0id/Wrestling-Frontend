@@ -9,7 +9,8 @@ import {environment} from '../../environments/environment';
   providedIn: "root"
 })
 export class AuthService{
-  private authUrl = `${environment.apiUrl}/${environment.authApiUrl}`;
+  private authUrl = `${environment.api}/${environment.authApiUrl}`;
+
   private isAuthenticated:boolean = false;
   constructor(private http: HttpClient, private router: Router) {
     this.isAuthenticated = !!localStorage.getItem('token');

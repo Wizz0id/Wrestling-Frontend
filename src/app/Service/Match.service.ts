@@ -3,12 +3,14 @@ import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Match} from '../DTO/Match';
+import {MatchWithRatingDTO} from '../DTO/MatchWithRatingDTO';
 
 @Injectable({
   providedIn: "root"
 })
 export class MatchService{
-  private matchUrl = `${environment.apiUrl}/${environment.matchApiUrl}`;
+  private matchUrl = `${environment.api}/${environment.matchApiUrl}`;
+
   constructor(private http: HttpClient) {
   }
 
@@ -16,8 +18,8 @@ export class MatchService{
     const url = search ? `${this.matchUrl}?search=${search}` : this.matchUrl;
     return this.http.get<Match[]>(url);
   }
-  getMatchById(id: string): Observable<Match>{
-    return this.http.get<Match>(`${this.matchUrl}/${id}`);
+  getMatchById(id: string): Observable<MatchWithRatingDTO>{
+    return this.http.get<MatchWithRatingDTO>(`${this.matchUrl}/${id}`);
   }
 
   getMatchesByWrestler(wrestlerId: number): Observable<Match[]>{
