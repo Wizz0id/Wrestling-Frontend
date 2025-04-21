@@ -4,11 +4,15 @@ import {ActivatedRoute} from '@angular/router';
 import {MatchService} from '../../Service/Match.service';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {MatchesRenewsListComponent} from '../matches-renews-list/matches-renews-list.component';
+import {Wrestler} from '../../DTO/Wrestler';
+import {WrestlerService} from '../../Service/Wrestler.service';
+import {WrestlerComponent} from '../../WrestlerComponents/wrestler-card/wrestler-card.component';
 
 @Component({
   selector: 'app-match',
   imports: [
-    MatchesRenewsListComponent
+    MatchesRenewsListComponent,
+    WrestlerComponent,
   ],
   standalone: true,
   templateUrl: './match.component.html',
@@ -18,10 +22,14 @@ export class MatchComponent implements OnInit{
   match!: Match;
   safeUrl!: SafeResourceUrl;
   isMatchesRenewsListLoaded: boolean = false;
-  constructor(private matchService: MatchService,private route: ActivatedRoute, private sanitizer: DomSanitizer) {}
+  isWinnerLoaded: boolean = false;
+  isParticipantsLoaded: boolean = false;
+  participants: Wrestler[] = [];
+  winner!: Wrestler;
+  constructor(private matchService: MatchService, private wrestlerService: WrestlerService, private route: ActivatedRoute, private sanitizer: DomSanitizer) {}
 
   loadMatchesRenewsList() {
-    this.isMatchesRenewsListLoaded = true;
+    this.isMatchesRenewsListLoaded = !this.isMatchesRenewsListLoaded;
   }
 
   ngOnInit(): void {
@@ -49,6 +57,17 @@ export class MatchComponent implements OnInit{
         });
       }
     });
+  }
+
+  loadWinner(){
+    if(!this.winner) this.wrestlerService.getWrestlerById(this.match.winnerId.toString()).subscribe(winner => this.winner = winner.wrestler);
+    this.isWinnerLoaded = !this.isWinnerLoaded;
+  }
+
+  loadParticipants(){
+    debugger
+    if((this.participants.length == 0)) this.wrestlerService.getWrestlersByMatch(this.match.id).subscribe(participants => this.participants = participants);
+    this.isParticipantsLoaded = !this.isParticipantsLoaded;
   }
 
   isYouTubeUrl(url: string): boolean {

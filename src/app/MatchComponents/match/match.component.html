@@ -5,9 +5,6 @@
     <p><strong>Тип:</strong> {{ match.type }}</p>
     <p><strong>Профессиональный рейтинг:</strong> {{ match.professionalRating }}</p>
     <p><strong>Рейтинг пользователей:</strong> {{ match.peoplesRating }}</p>
-    <p><strong>ID события:</strong> {{ match.eventId }}</p>
-    <p><strong>ID победителя:</strong> {{ match.winnerId }}</p>
-
     <!-- Встраивание видео -->
     <iframe width="560" height="315" [src]="safeUrl" allowfullscreen></iframe>
     <section id="button-container">
@@ -21,7 +18,35 @@
             </span>
         </div>
       </div>
+      <div class="container" (click)="loadWinner()">
+        <div class="button v17">
+          <span class="label">Победитель</span>
+          <span class="icon">
+                <span></span>
+            </span>
+          <span class="icon2">
+            </span>
+        </div>
+      </div>
+      <div class="container" (click)="loadParticipants()">
+        <div class="button v17">
+          <span class="label">Участники</span>
+          <span class="icon">
+                <span></span>
+            </span>
+          <span class="icon2">
+            </span>
+        </div>
+      </div>
     </section>
+    @if (isWinnerLoaded){
+      <app-wrestler-card [wrestler]="winner"></app-wrestler-card>
+    }
+    @if (isParticipantsLoaded){
+      @for (wrestler of participants; track $index){
+        <app-wrestler-card [wrestler]="wrestler"></app-wrestler-card>
+      }
+    }
     @if (isMatchesRenewsListLoaded){
       <app-matches-renews-list [matchId]="String(match.id)"></app-matches-renews-list>
     }

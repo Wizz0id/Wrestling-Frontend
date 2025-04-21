@@ -17,7 +17,7 @@
         </div>
       </div>
     </section>
-    @if (wrestlersList){
+    @if (isWrestlersLoaded){
       <div class="wrestlers-list">
         @for (wrestler of wrestlersList; track $index){
           <app-wrestler-card [wrestler]="wrestler"></app-wrestler-card>

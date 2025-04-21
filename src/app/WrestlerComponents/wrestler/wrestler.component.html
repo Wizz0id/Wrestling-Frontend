@@ -37,14 +37,14 @@
         </div>
       </div>
     </section>
-    @if(matchList){
+    @if(isMatchesLoaded){
       @for (match of matchList; track $index){
         <div class="matches-list">
           <app-match-card [match]="match"></app-match-card>
         </div>
       }
     }
-    @if(titleList){
+    @if(isTitlesLoaded){
       @for (title of titleList; track $index){
         <div class="title-list">
           <app-title-card [title]="title"></app-title-card>

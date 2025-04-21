@@ -1,50 +1,52 @@
 <div class="renew-list" xmlns="http://www.w3.org/1999/html">
   <h3>Отзывы</h3>
-  <section id="button-container" style="display: flex; flex-direction: column">
-    <div class="container" (click)="toggleReviewForm()">
-      <div class="button v17">
-        <span class="label">Оставить отзыв</span>
-        <span class="icon">
+  @if(isAuth){
+    <section id="button-container" style="display: flex; flex-direction: column">
+      <div class="container" (click)="toggleReviewForm()">
+        <div class="button v17">
+          <span class="label">Оставить отзыв</span>
+          <span class="icon">
+              <span></span>
+          </span>
+          <span class="icon2">
+          </span>
+        </div>
+      </div>
+      @if(isReviewFormVisible)
+      {
+        <form (ngSubmit)="submitReview()" [formGroup]="renewForm">
+          <div>
+            <label for="comment">Ваш отзыв:</label>
+            <textarea id="comment" formControlName="renew" required></textarea>
+          </div>
+          <div>
+            <label for="rating">Ваш рейтинг:</label>
+            <select id="rating" formControlName="rating">
+              <option value="0">0</option>
+              <option value="0.5">0.5</option>
+              <option value="1">1</option>
+              <option value="1.5">1.5</option>
+              <option value="2">2</option>
+              <option value="2.5">2.5</option>
+              <option value="3">3</option>
+              <option value="3.5">3.5</option>
+              <option value="4">4</option>
+              <option value="4.5">4.5</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <div type="submit" class="button v17" (click)="submitReview()">
+            <span class="label">Отправить</span>
+            <span class="icon">
                 <span></span>
             </span>
-        <span class="icon2">
+            <span class="icon2">
             </span>
-      </div>
-    </div>
-  @if(isReviewFormVisible)
-  {
-    <form (ngSubmit)="submitReview()" [formGroup]="renewForm">
-      <div>
-        <label for="comment">Ваш отзыв:</label>
-        <textarea id="comment" formControlName="renew" required></textarea>
-      </div>
-      <div>
-        <label for="rating">Ваш рейтинг:</label>
-        <select id="rating" formControlName="rating">
-          <option value="0">0</option>
-          <option value="0.5">0.5</option>
-          <option value="1">1</option>
-          <option value="1.5">1.5</option>
-          <option value="2">2</option>
-          <option value="2.5">2.5</option>
-          <option value="3">3</option>
-          <option value="3.5">3.5</option>
-          <option value="4">4</option>
-          <option value="4.5">4.5</option>
-          <option value="5">5</option>
-        </select>
-      </div>
-      <div type="submit" class="button v17" (click)="submitReview()">
-        <span class="label">Отправить</span>
-        <span class="icon">
-                <span></span>
-            </span>
-        <span class="icon2">
-            </span>
-      </div>
-    </form>
+          </div>
+        </form>
+      }
+    </section>
   }
-  </section>
   @for (renew of renewList; track $index)
   {
     <app-event-renew [renew]=renew></app-event-renew>

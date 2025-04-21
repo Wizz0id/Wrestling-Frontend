@@ -21,17 +21,19 @@ export class EventComponent implements OnInit{
   event!: EventWrestling;
   matchList: Match[] = [];
   isRenewLoaded: boolean = false;
+  isMatchLoaded: boolean = false;
 
   constructor(private eventService: EventService, private route: ActivatedRoute, private matchService: MatchService) {
   }
 
   loadRenewsList() {
-    this.isRenewLoaded = true;
+    this.isRenewLoaded = !this.isRenewLoaded;
   }
 
   getAllMatches()
   {
-    this.matchService.getMatchesByEvent(this.event.id).subscribe(matches => this.matchList = matches);
+    if((this.matchList.length == 0)) this.matchService.getMatchesByEvent(this.event.id).subscribe(matches => this.matchList = matches);
+    this.isMatchLoaded = !this.isMatchLoaded;
   }
 
   ngOnInit(): void {

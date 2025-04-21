@@ -18,10 +18,12 @@ import {WrestlerComponent} from '../../WrestlerComponents/wrestler-card/wrestler
 export class TitleComponent implements OnInit{
   title!: Title;
   wrestlerList: Wrestler[] = [];
+  isWrestlersLoaded: boolean = false;
   constructor(private titleService: TitleService, private route: ActivatedRoute, private wrestlerService: WrestlerService) {
   }
   getChampions(){
-    this.wrestlerService.getWrestlersByTitle(this.title.id).subscribe(wrestlers => this.wrestlerList = wrestlers);
+    if((this.wrestlerList.length == 0))this.wrestlerService.getWrestlersByTitle(this.title.id).subscribe(wrestlers => this.wrestlerList = wrestlers);
+    this.isWrestlersLoaded =!this.isWrestlersLoaded;
   }
 
   ngOnInit(): void {

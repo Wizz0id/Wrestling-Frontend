@@ -30,6 +30,8 @@ export class WrestlerCardComponent implements OnInit, OnDestroy{
   promotion!: Promotion;
   matchList: Match[] = [];
   titleList: Title[] = [];
+  isTitlesLoaded: boolean = false;
+  isMatchesLoaded: boolean = false;
 
   constructor(private wrestlerService: WrestlerService, private route: ActivatedRoute, private router: Router,
               private matchService: MatchService, private titleService: TitleService, private appComp: AppComponent) {
@@ -84,10 +86,12 @@ export class WrestlerCardComponent implements OnInit, OnDestroy{
     });
   }
   getMatches(){
-    this.matchService.getMatchesByWrestler(this.wrestler.id).subscribe(matches => this.matchList = matches);
+    if((this.matchList.length == 0)) this.matchService.getMatchesByWrestler(this.wrestler.id).subscribe(matches => this.matchList = matches);
+    this.isMatchesLoaded = !this.isMatchesLoaded;
   }
   getTitles(){
-    this.titleService.getTitlesByWrestler(this.wrestler.id).subscribe(titles => this.titleList = titles)
+    if((this.titleList.length == 0)) this.titleService.getTitlesByWrestler(this.wrestler.id).subscribe(titles => this.titleList = titles);
+    this.isTitlesLoaded = !this.isTitlesLoaded;
   }
   ToPromotion()
   {

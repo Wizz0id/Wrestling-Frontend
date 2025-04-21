@@ -18,6 +18,7 @@ import {WrestlerComponent} from '../../WrestlerComponents/wrestler-card/wrestler
 export class PromotionComponent implements OnInit{
   promotion!: Promotion;
   wrestlersList: Wrestler[] = [];
+  isWrestlersLoaded: boolean = false;
 
   constructor(private promotionService: PromotionService, private route: ActivatedRoute, private wrestlerService: WrestlerService) {
   }
@@ -54,6 +55,7 @@ export class PromotionComponent implements OnInit{
 
   getWrestlers()
   {
-    this.wrestlerService.getWrestlersByPromotion(this.promotion.id).subscribe(wrestlers => this.wrestlersList = wrestlers);
+    if((this.wrestlersList.length == 0)) this.wrestlerService.getWrestlersByPromotion(this.promotion.id).subscribe(wrestlers => this.wrestlersList = wrestlers);
+    this.isWrestlersLoaded = !this.isWrestlersLoaded;
   }
 }

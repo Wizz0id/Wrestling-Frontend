@@ -27,6 +27,10 @@ export class WrestlerService {
     return this.http.get<Wrestler[]>(`${this.wrestlerUrl}/wrestlers?promotion=${promoID}`);
   }
 
+  getWrestlersByMatch(matchID: number): Observable<Wrestler[]>{
+    return this.http.get<Wrestler[]>(`${this.wrestlerUrl}/wrestlers?match=${matchID}`)
+  }
+
   getWrestlersByTitle(titleId: number): Observable<Wrestler[]>{
     return this.http.get<Wrestler[]>(`${this.wrestlerUrl}/wrestlers?title=${titleId}`);
   }

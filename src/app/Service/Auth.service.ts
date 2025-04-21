@@ -10,7 +10,9 @@ import {Router} from '@angular/router';
 })
 export class AuthService{
   private authUrl = `${environment.apiUrl}/${environment.authApiUrl}`;
+  private isAuthenticated:boolean = false;
   constructor(private http: HttpClient, private router: Router) {
+    this.isAuthenticated = !!localStorage.getItem('token');
   }
   login(user: User): Subscription{
     const username = user.username;
@@ -19,10 +21,14 @@ export class AuthService{
       .subscribe((response: any) => {
         localStorage.setItem('token', response.token);
         localStorage.setItem('username', username);
+        this.isAuthenticated = true;
         this.router.navigate(['/']).then();
       });
   }
   register(user: User): Observable<boolean>{
     return this.http.post<boolean>(`${this.authUrl}/register`, user);
+  }
+  isAuthenticatedUser(): boolean {
+    return this.isAuthenticated;
   }
 }

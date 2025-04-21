@@ -25,7 +25,7 @@
         </div>
       </div>
     </section>
-    @if (matchList){
+    @if (isMatchLoaded){
       @for (match of matchList; track $index){
         <div class="match-list">
           <app-match-card [match]="match"></app-match-card>
