@@ -14,7 +14,7 @@
       </div>
       @if(isReviewFormVisible)
       {
-        <form (ngSubmit)="submitReview()" [formGroup]="renewForm">
+        <form class="form" (ngSubmit)="submitReview()" [formGroup]="renewForm">
           <div>
             <label for="comment">Ваш отзыв:</label>
             <textarea id="comment" formControlName="renew" required></textarea>

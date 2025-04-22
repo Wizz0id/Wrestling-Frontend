@@ -1,6 +1,7 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {LoginComponent} from '../login/login.component';
 import {RegisterComponent} from '../register/register.component';
+import {AppComponent} from '../../app.component';
 
 @Component({
   selector: 'app-auth',
@@ -14,12 +15,17 @@ import {RegisterComponent} from '../register/register.component';
 })
 export class AuthComponent {
   @Input() formType: 'login' | 'register' = 'login';
-
+  @Output() closeModal: EventEmitter<any> = new EventEmitter<any>();
+  constructor(private appComponent: AppComponent) {
+  }
   switchToRegister() {
     this.formType = 'register';
   }
 
   switchToLogin() {
     this.formType = 'login';
+  }
+  close(){
+    this.appComponent.showAuthForm = false;
   }
 }

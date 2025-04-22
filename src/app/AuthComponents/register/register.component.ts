@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {AuthService} from '../../Service/Auth.service';
+import {AuthComponent} from '../auth/auth.component';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +10,7 @@ import {AuthService} from '../../Service/Auth.service';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private authComponent: AuthComponent) {
   }
   register(){
     const username = (document.getElementById('username') as HTMLInputElement).value || '';
@@ -23,7 +24,11 @@ export class RegisterComponent {
         username: username,
         password: password
       }
-      this.authService.register(user).subscribe(resp => console.log(resp));
+      this.authService.register(user).subscribe(resp => {
+        if(resp){
+          this.authComponent.formType = 'login';
+        }
+      });
     }
   }
 }

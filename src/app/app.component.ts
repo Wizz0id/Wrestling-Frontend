@@ -66,4 +66,6 @@ export class AppComponent implements OnInit{
       animationElement.style.backgroundImage = `url('${newBackground}')`;
     }
   }
+
+  protected readonly localStorage = localStorage;
 }

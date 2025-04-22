@@ -9,12 +9,12 @@ import {TitlesListComponent} from './TitleComponents/titles-list/titles-list.com
 import {PromotionComponent} from './PromotionComponents/promotion/promotion.component';
 import {EventComponent} from './EventComponents/event/event.component';
 import {TitleComponent} from './TitleComponents/title/title.component';
-import {WrestlerAddComponent} from './WrestlerComponents/wrestler-add/wrestler-add.component';
+import {WrestlerAddComponent} from './PromotionComponents/wrestler-add/wrestler-add.component';
 
 export const routes: Routes = [
   {path: 'wrestlers', component: WrestlersListComponent},
   {path: 'wrestlers/:id', component: WrestlerCardComponent},
-  {path: 'wrestler-create', component: WrestlerAddComponent},
+  {path: 'wrestler-create/:id', component: WrestlerAddComponent},
   {path: 'promotions', component: PromotionsListComponent},
   {path: 'promotions/:id', component: PromotionComponent},
   {path: 'matches', component: MatchesListComponent},

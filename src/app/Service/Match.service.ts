@@ -29,4 +29,8 @@ export class MatchService{
   getMatchesByEvent(eventId: number): Observable<Match[]>{
     return this.http.get<Match[]>(`${this.matchUrl}/matches?event=${eventId}`)
   }
+
+  createMatch(match: Match): Observable<Match>{
+    return this.http.post<Match>(this.matchUrl, match);
+  }
 }

@@ -7,4 +7,5 @@ export interface Match{
   eventId: number;
   winnerId: number;
   peoplesRating: number;
+  wrestlersId: number[];
 }

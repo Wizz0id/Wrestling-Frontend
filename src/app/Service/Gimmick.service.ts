@@ -17,7 +17,7 @@ export class GimmickService {
     return this.http.get<Gimmick[]>(`${this.gimmickApiUrl}/${wrestlerID}/${environment.gimmickApiUrl}`);
   }
 
-  addGimmick(wrestlerID: string, gimmick: Gimmick): Observable<Gimmick> {
+  addGimmick(wrestlerID: string, gimmick: String): Observable<Gimmick> {
     return this.http.post<Gimmick>(`${this.gimmickApiUrl}/${wrestlerID}/${environment.gimmickApiUrl}`, gimmick, { headers: { 'Content-Type': 'application/json' }});
   }
   deleteGimmick(wrestlerID: string, gimmickID: string){

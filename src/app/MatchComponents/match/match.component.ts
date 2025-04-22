@@ -47,11 +47,12 @@ export class MatchComponent implements OnInit{
               );
             }
           } else if (this.isVKUrl(this.match.url)) {
+            debugger
             const videoIds = this.extractVKVideoIds(this.match.url);
             if (videoIds) {
               const { ownerId, videoId } = videoIds;
               this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-                `https://vk.com/video_ext.php?oid=-${ownerId}&id=${videoId}&hash=&__ref=`
+                `https://vk.com/video_ext.php?oid=${ownerId}&id=${videoId}&hash=&__ref=`
               );
             }
           }
@@ -66,7 +67,6 @@ export class MatchComponent implements OnInit{
   }
 
   loadParticipants(){
-    debugger
     if((this.participants.length == 0)) this.wrestlerService.getWrestlersByMatch(this.match.id).subscribe(participants => this.participants = participants);
     this.isParticipantsLoaded = !this.isParticipantsLoaded;
   }
@@ -86,7 +86,7 @@ export class MatchComponent implements OnInit{
   }
 
   extractVKVideoIds(url: string): { ownerId: string; videoId: string } | null {
-    const regex = /(?:vk\.com\/video|vkvideo\.ru\/video)-(\d+)_(\d+)/;
+    const regex = /(?:vk\.com\/video|vkvideo\.ru\/video)(\d+)_(\d+)/;
     const match = url.match(regex);
     if (match) {
       return { ownerId: match[1], videoId: match[2] };

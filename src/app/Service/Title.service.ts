@@ -26,6 +26,10 @@ export class TitleService {
     return this.http.get<Title[]>(`${this.titleUrl}/titles?wrestler=${wrestlerId}`);
   }
 
+  createTitle(promoId: number, title: Title):Observable<Title>{
+    return this.http.post<Title>(`${this.titleUrl}?promo=${promoId}`, title, { headers: { 'Content-Type': 'application/json' } });
+  }
+
   updateTitle(id: number, title: Title): Observable<Title> {
     return this.http.put<Title>(`${this.titleUrl}/${id}`, title, { headers: { 'Content-Type': 'application/json' } });
   }

@@ -6,4 +6,44 @@
     <app-promotion-card [promotion]=promotion></app-promotion-card>
   }
 </div>
+@if (localStorage.getItem('role') == "ADMIN"){
+  <section id="button-container">
+    <div class="container" (click)="createPromotion()">
+      <div class="button v19">
+        <span class="label">Добавить промоушен</span>
+        <span class="icon">
+                <span></span>
+            </span>
+        <span class="icon2">
+            </span>
+      </div>
+    </div>
+    @if(createFormVisible){
+      <form class="form" (ngSubmit)="submitPromotion()" [formGroup]="promotionForm">
+        <div>
+          <label for="name">Название</label>
+          <input id="name" formControlName="name" required />
+        </div>
+        <div>
+          <label for="fioOfCeo">ФИО Главы Промоушена</label>
+          <input id="fioOfCeo" formControlName="fioOfCeo" required />
+        </div>
+        <div>
+          <label for="picture">Фотография:</label>
+          <input id="picture" type="file" (change)="onFileSelected($event)" accept="image/*" />
+        </div>
+        <div type="submit" class="button v19" (click)="submitPromotion()">
+          <div class="button v17">
+            <span class="label">Создать</span>
+            <span class="icon">
+                <span></span>
+            </span>
+            <span class="icon2">
+            </span>
+          </div>
+        </div>
+      </form>
+    }
+  </section>
 
+}

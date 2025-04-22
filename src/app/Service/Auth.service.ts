@@ -3,7 +3,6 @@ import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {User} from '../DTO/User';
 import {Observable, Subscription} from 'rxjs';
-import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: "root"
@@ -12,7 +11,7 @@ export class AuthService{
   private authUrl = `${environment.apiUrl}/${environment.authApiUrl}`;
 
   private isAuthenticated:boolean = false;
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient) {
     this.isAuthenticated = !!localStorage.getItem('token');
   }
   login(user: User): Subscription{
@@ -24,7 +23,6 @@ export class AuthService{
         localStorage.setItem('username', username);
         localStorage.setItem('role', response.role);
         this.isAuthenticated = true;
-        this.router.navigate(['/']).then();
       });
   }
   register(user: User): Observable<boolean>{

@@ -11,7 +11,9 @@ import {TitleService} from '../../Service/Title.service';
 import {Title} from '../../DTO/Title';
 import {TitleCardComponent} from '../../TitleComponents/title-card/title-card.component';
 import {AppComponent} from '../../app.component';
-import {GimmicksListComponent} from '../gimmicks-list/gimmicks-list.component';
+import {GimmickService} from '../../Service/Gimmick.service';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {Gimmick} from '../../DTO/Gimmick';
 
 @Component({
   selector: 'app-wrestler',
@@ -19,7 +21,7 @@ import {GimmicksListComponent} from '../gimmicks-list/gimmicks-list.component';
     DatePipe,
     MatchCardComponent,
     TitleCardComponent,
-    GimmicksListComponent
+    ReactiveFormsModule
   ],
   standalone: true,
   templateUrl: './wrestler.component.html',
@@ -32,9 +34,17 @@ export class WrestlerCardComponent implements OnInit, OnDestroy{
   titleList: Title[] = [];
   isTitlesLoaded: boolean = false;
   isMatchesLoaded: boolean = false;
+  readonly role: string;
+  gimmickForm: FormGroup;
+  gimmickFormVisible: boolean = false;
+  gimmickList: Gimmick[] = [];
 
   constructor(private wrestlerService: WrestlerService, private route: ActivatedRoute, private router: Router,
-              private matchService: MatchService, private titleService: TitleService, private appComp: AppComponent) {
+              private matchService: MatchService, private titleService: TitleService, private appComp: AppComponent, private gimmickService: GimmickService, private fb: FormBuilder) {
+    this.role = localStorage.getItem('role')|| "";
+    this.gimmickForm = this.fb.group({
+      name: ['', Validators.required]
+    })
   }
 
   ngOnDestroy() {
@@ -53,6 +63,7 @@ export class WrestlerCardComponent implements OnInit, OnDestroy{
         this.wrestlerService.getWrestlerById(wrestlerId).subscribe(wrestlerWithPromo => {
           this.wrestler = wrestlerWithPromo.wrestler;
           this.promotion = wrestlerWithPromo.promotion;
+          this.gimmickService.getGimmicks(this.wrestler.id.toString()).subscribe(gimmicks => this.gimmickList = gimmicks);
           const background = document.querySelector<HTMLElement>('.animation');
           if (background) {
             background.classList.add('static');
@@ -84,6 +95,14 @@ export class WrestlerCardComponent implements OnInit, OnDestroy{
       wrestler.countOfMatches = this.wrestler.countOfMatches;
       this.wrestler = wrestler;
     });
+  }
+  addGimmick(){
+    this.gimmickFormVisible = !this.gimmickFormVisible;
+  }
+  createGimmick(){
+    if (this.gimmickForm.valid) {
+      this.gimmickService.addGimmick(this.wrestler.id.toString(), this.gimmickForm.value).subscribe(gimmick => this.gimmickList.push(gimmick));
+    }
   }
   getMatches(){
     if((this.matchList.length == 0)) this.matchService.getMatchesByWrestler(this.wrestler.id).subscribe(matches => this.matchList = matches);

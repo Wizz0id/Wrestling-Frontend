@@ -24,4 +24,7 @@ export class PromotionService {
   {
     return this.http.put<Promotion>(`${this.promotionUrl}/${id}`, promotion, { headers: { 'Content-Type': 'application/json' }});
   }
+  createPromotion(promotion: Promotion): Observable<Promotion>{
+    return this.http.post<Promotion>(`${this.promotionUrl}`, promotion, { headers: { 'Content-Type': 'application/json' }});
+  }
 }

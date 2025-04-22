@@ -3,7 +3,6 @@ import {Wrestler} from '../../DTO/Wrestler';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {WrestlerService} from '../../Service/Wrestler.service';
 import {WrestlerComponent} from '../wrestler-card/wrestler-card.component';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-wrestlers-list',
@@ -18,10 +17,9 @@ import {Router} from '@angular/router';
 export class WrestlersListComponent implements OnInit{
   wrestlersList: Wrestler[] = [];
   searchQuery: FormControl = new FormControl("");
-  readonly role: string;
 
-  constructor(private wrestlerService: WrestlerService, private router: Router,) {
-    this.role = localStorage.getItem('role') || "";
+
+  constructor(private wrestlerService: WrestlerService) {
   }
 
   ngOnInit(): void {
@@ -38,9 +36,5 @@ export class WrestlersListComponent implements OnInit{
     if (keyboardEvent.key === 'Enter') {
       this.loadWrestlers();
     }
-  }
-
-  createWrestler(){
-    this.router.navigate([`wrestler-create`]).then();
   }
 }

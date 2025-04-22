@@ -16,6 +16,38 @@
             </span>
         </div>
       </div>
+      @if(role=="ADMIN"){
+        <div class="container" (click)="createWrestler()">
+          <div class="button v19">
+            <span class="label">Добавить рестлера</span>
+            <span class="icon">
+                <span></span>
+            </span>
+            <span class="icon2">
+            </span>
+          </div>
+        </div>
+        <div class="container" (click)="createTitle()">
+          <div class="button v19">
+            <span class="label">Добавить титул</span>
+            <span class="icon">
+                <span></span>
+            </span>
+            <span class="icon2">
+            </span>
+          </div>
+        </div>
+        <div class="container" (click)="createEvent()">
+          <div class="button v19">
+            <span class="label">Добавить событие</span>
+            <span class="icon">
+                <span></span>
+            </span>
+            <span class="icon2">
+            </span>
+          </div>
+        </div>
+      }
     </section>
     @if (isWrestlersLoaded){
       <div class="wrestlers-list">
@@ -25,6 +57,44 @@
       </div>
     }
   </div>
+  @if (createTitleFormVisible){
+    <form class="form" (ngSubmit)="submitTitle()" [formGroup]="titleForm">
+      <div>
+        <label for="title-name">Название</label>
+        <input id="title-name" formControlName="name" required />
+      </div>
+      <div>
+        <label for="title-picture">Фотография:</label>
+        <input id="title-picture" type="file" (change)="onFileSelected($event)" accept="image/*" />
+      </div>
+      <div type="submit" class="button v17" (click)="submitTitle()">
+        <span class="label">Создать</span>
+        <span class="icon">
+      <span></span>
+    </span>
+        <span class="icon2"></span>
+      </div>
+    </form>
+  }
+  @if (createEventFormVisible){
+    <form class="form" (ngSubmit)="submitEvent()" [formGroup]="eventForm">
+      <div>
+        <label for="event-name">Название</label>
+        <input id="event-name" formControlName="name" required />
+      </div>
+      <div>
+        <label for="date">Дата начала карьеры:</label>
+        <input id="date" formControlName="date" type="date" required />
+      </div>
+      <div type="submit" class="button v17" (click)="submitEvent()">
+        <span class="label">Создать</span>
+        <span class="icon">
+      <span></span>
+    </span>
+        <span class="icon2"></span>
+      </div>
+    </form>
+  }
   <!--  <input type="file" (change)="onFileSelected($event)" accept="image/*"><br>-->
     <!--  <button (click)="updatePromotion()">Обновить промоушен</button>-->
 }

@@ -1,0 +1,22 @@
+export enum MatchType {
+  Single = "Один на Один",
+  TagTeam = "Командный",
+  TripleThreat = "Тройная Угроза",
+  Handicap = "Командный матч с преимуществом",
+  FatalFourWay = "Четырёхсторонний",
+  Submission = "Подчинение",
+  NoDisqualification = "Без дисквалификаций",
+  RoyalRumble = "Королевская битва",
+  HellInCell = "Ад в Клетке",
+  IronMan = "Железный человек",
+  SteelCage = "Стальная клетка",
+  Coffin = "С гробом",
+  EliminationChamber = "Камера уничтожения",
+  IQuit = "Я сдаюсь",
+  MoneyInTheBank = "Деньги в банке",
+  SurvivorSeries = "Серия на выживание",
+  WarGames = "Военные игры",
+  TLC = "Столы, лестницы и стулья",
+  ExtremeRules = "Экстремальные правила",
+  LastManStanding = "Последний выживший"
+}

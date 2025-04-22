@@ -19,6 +19,6 @@ export class WrestlerComponent {
   constructor(private router: Router) {
   }
   redirectToWrestler():void{
-    this.router.navigate([`/wrestlers/${this.wrestler.id}`]);
+    this.router.navigate([`/wrestlers/${this.wrestler.id}`]).then();
   }
 }

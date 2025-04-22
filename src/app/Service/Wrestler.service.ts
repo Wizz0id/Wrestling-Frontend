@@ -36,7 +36,7 @@ export class WrestlerService {
   }
 
   createWrestler(wrestler: Wrestler): Observable<Wrestler> {
-    return this.http.put<Wrestler>(`${this.wrestlerUrl}`, wrestler, { headers: { 'Content-Type': 'application/json' } });
+    return this.http.post<Wrestler>(`${this.wrestlerUrl}`, wrestler, { headers: { 'Content-Type': 'application/json' } });
   }
 
   updateWrestler(id: number, wrestler: Wrestler): Observable<Wrestler> {

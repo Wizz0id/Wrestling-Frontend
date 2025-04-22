@@ -3,7 +3,7 @@
     <h2>{{event.name}}</h2>
     <p>Дата: {{event.date}}</p>
     <p>Промоушен: {{event.promotionName}}</p>
-    <section id="button-container" style="display: flex; flex-direction: column">
+    <section id="button-container">
       <div class="container" (click)="getAllMatches()">
         <div class="button v17">
           <span class="label">Матчи события</span>
@@ -24,6 +24,18 @@
             </span>
         </div>
       </div>
+      @if(localStorage.getItem('role') == "ADMIN"){
+        <div class="container" (click)="createMatch()">
+          <div class="button v19">
+            <span class="label">Добавить матч</span>
+            <span class="icon">
+                <span></span>
+            </span>
+            <span class="icon2">
+            </span>
+          </div>
+        </div>
+      }
     </section>
     @if (isMatchLoaded){
       @for (match of matchList; track $index){
@@ -35,5 +47,62 @@
     @if(isRenewLoaded){
       <app-events-renews-list [eventID]="String(event.id)"></app-events-renews-list>
     }
+  </div>
+}
+@if (addMatchVisible){
+  <div class="add-match-form">
+    <h3>Добавить матч</h3>
+    <form class="form" (ngSubmit)="addMatch()">
+      <div>
+        <label for="name">Название матча:</label>
+        <input type="text" id="name" [(ngModel)]="newMatch.name" name="name" required>
+      </div>
+      <div>
+        <label for="type">Тип матча:</label>
+        <select id="type" [(ngModel)]="newMatch.type" name="type" required>
+          @for(type of matchTypes; track $index){
+            <option [value]="type">{{type}}</option>
+          }
+        </select>
+      </div>
+      <div>
+        <label for="url">Ссылка на видео:</label>
+        <input type="url" id="url" [(ngModel)]="newMatch.url" name="url" required>
+      </div>
+      <div>
+        <label for="professionalRating">Рейтинг профессионалов:</label>
+        <input type="number" id="professionalRating" [(ngModel)]="newMatch.professionalRating" name="professionalRating" required>
+      </div>
+      <div>
+        <label for="winnerId">Победитель:</label>
+        <select id="winnerId" [(ngModel)]="newMatch.winnerId" name="winnerId" required>
+          @for(wrestler of selectedWrestlers; track $index){
+            <option [value]="wrestler.id">{{wrestler.fio}}</option>
+          }
+        </select>
+      </div>
+      <div>
+        <label>Участники:</label>
+        <ul>
+          @for (wrestler of wrestlers; track $index){
+            <li (click)="toggleWrestler(wrestler)">
+              {{wrestler.fio}}
+            </li>
+          }
+        </ul>
+      </div>
+      <section id="button-container-add">
+        <div type="submit" class="container" (click)="addMatch()">
+          <div class="button v19">
+            <span class="label">Добавить матч</span>
+            <span class="icon">
+              <span></span>
+          </span>
+            <span class="icon2">
+          </span>
+          </div>
+        </div>
+      </section>
+    </form>
   </div>
 }

@@ -19,4 +19,8 @@ export class EventService{
   getEventById(id: string): Observable<EventWrestling>{
     return this.http.get<EventWrestling>(`${this.eventUrl}/${id}`);
   }
+
+  createEvent(promoId: number, eventWrestling: EventWrestling): Observable<EventWrestling>{
+    return this.http.post<EventWrestling>(`${this.eventUrl}?promo=${promoId}`, eventWrestling);
+  }
 }

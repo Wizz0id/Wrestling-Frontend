@@ -3,7 +3,13 @@
     <h2>{{wrestler.fio}}</h2>
     <div class="wrestler-image-container">
       <img [src]="'data:image/jpeg;base64,' + wrestler.picture" alt="Фотография {{ wrestler.fio }}" title="Фотография {{ wrestler.fio }}" width="300px">
-      <app-gimmicks-list [wrestler]="wrestler" ></app-gimmicks-list>
+      <div class="gimmick-list">
+        @for (gimmick of gimmickList; track $index){
+          <div class="gimmick-card">
+            <h2>{{ gimmick.name }}</h2>
+          </div>
+        }
+      </div>
     </div>
     <div class="wrestler-desc">
       <p><strong>Рост:</strong> {{ wrestler.height }} см</p>
@@ -36,6 +42,29 @@
             </span>
         </div>
       </div>
+      @if (role=="ADMIN"){
+<!--        <input type="file" (change)="onFileSelected($event)" accept="image/*"><br>-->
+<!--        <div class="container" (click)="updateWrestler()">-->
+<!--          <div class="button v19">-->
+<!--            <span class="label">Обновить Рестлера</span>-->
+<!--            <span class="icon">-->
+<!--                <span></span>-->
+<!--            </span>-->
+<!--            <span class="icon2">-->
+<!--            </span>-->
+<!--          </div>-->
+<!--        </div>-->
+        <div class="container" (click)="addGimmick()">
+          <div class="button v19">
+            <span class="label">Добавить прозвище</span>
+            <span class="icon">
+                <span></span>
+            </span>
+            <span class="icon2">
+            </span>
+          </div>
+        </div>
+      }
     </section>
     @if(isMatchesLoaded){
       @for (match of matchList; track $index){
@@ -53,6 +82,18 @@
     }
   </div>
 }
-
-<!--    <input type="file" (change)="onFileSelected($event)" accept="image/*"><br>-->
-<!--    <button (click)="updateWrestler()">Обновить Рестлера</button>-->
+@if(gimmickFormVisible){
+  <form class="form" (ngSubmit)="addGimmick()" [formGroup]="gimmickForm">
+    <div>
+      <label for="fio">Прозвище</label>
+      <input id="fio" formControlName="name" required />
+    </div>
+    <div type="submit" class="button v17" (click)="createGimmick()">
+      <span class="label">Создать</span>
+      <span class="icon">
+      <span></span>
+    </span>
+      <span class="icon2"></span>
+    </div>
+  </form>
+}
